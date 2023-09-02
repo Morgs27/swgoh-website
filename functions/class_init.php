@@ -166,6 +166,8 @@ function total_stat($base,$mods,$property){
 
 function display_character_new($conn,$character,$current_team){
 
+	print_r($character);
+
 	$edit = false;
 	if (isset($current_team[1])){
 		if ($current_team[1] == "edit"){
@@ -201,6 +203,9 @@ function display_character_new($conn,$character,$current_team){
 	$sql = "SELECT * FROM character_data WHERE base_id = '$defID'";
 	$result = $conn->query($sql);
 	while ($data = $result->fetch_assoc()) {
+		
+		print_r($data);
+
 		$name = $data['name'];
 		$img = $data['img'];
 		$alignment = $data['alignment'];
