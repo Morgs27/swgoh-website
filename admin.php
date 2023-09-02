@@ -181,7 +181,7 @@ if ($_SESSION["Username"] == "Morgs27"){
         // header("location:admin.php");
     }
     if (isset($_GET['ship_team'])){
-        update_team_gp_all_ship();
+        update_team_gp_all_ship(); 
         // header("location:admin.php");
 
     }
@@ -195,10 +195,29 @@ if ($_SESSION["Username"] == "Morgs27"){
         $username = $_GET['Username_refresh'];
         echo $username;
         $ally_code = get_ally_code($conn,$username);
-        echo "   ";
-        echo $ally_code;
-        refresh_player_data($ally_code,$username,$conn);
+        // echo "   ";
+        // echo $ally_code;
+        // refresh_player_data($ally_code,$username,$conn);
         //  header("location:admin.php");
+        ?>
+        <script>
+        let username = <?php echo $username; ?>;
+        let ally_code = <?php echo $ally_code; ?>;
+        $.ajax({
+            url: "includes/refresh_user_data.inc.php",
+            method: "POST",    
+            data: {username: username, ally_code: allycode},
+            success: function(data){
+                console.log(data);
+                success_refresh(); 
+            },
+            error: function(errMsg) {
+                alert(JSON.stringify(errMsg));
+                fail_refresh();
+            }
+        });
+        </script>
+        <?php
     }
      if (isset($_GET['Username_refresh_team'])){
         $username = $_GET['Username_refresh_team'];
