@@ -152,9 +152,9 @@ foreach($units as $unit){
                     '$speed','$health','$protection','$physical_damage',
                     '$special_damage','$potentcy','$tenacity','$equiped','$legend','$ultimate',
                     '$alignment')";
-        echo $sql_c;
+        // echo $sql_c;
         $result_c = $conn->query($sql_c);
-
+        print_r($result_c);
         if ($gear == 13){
             $total_gear += 1;
         }
