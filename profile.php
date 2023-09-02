@@ -155,7 +155,7 @@ if ($last_refresh < $date){
         
 </div>
 
-<div class="refresh_modal load active" >
+<div class="refresh_modal load active" style = 'margin-top: 200px'>
         <div class="spinner_container" >
             <div class="spinner_circle"></div>
             <div class="spinner_circle outer_1"></div>
