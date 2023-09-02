@@ -39,6 +39,11 @@ if (isset($_POST["submit"])) {
 		$_SESSION['user_info_ship'] = $ship_info;
 		$_SESSION['user_info_class'] = $user_info;
 
+		print_r($ship_info);
+		print_r($user_info);
+		print_r($_SESSION['user_info_ship']);
+		print_r($_SESSION['user_info_class']);
+
 		update_team_gp($conn,$user_info,$_SESSION["Username"]);
 		update_team_gp_ship($conn,$user_info,$ship_info,$_SESSION["Username"]);
 
