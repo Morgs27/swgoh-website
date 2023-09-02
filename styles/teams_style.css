@@ -1,0 +1,289 @@
+body{
+    font-family: 'Raleway', sans-serif;
+}
+
+* {
+    user-select: none;
+}
+
+.content_container{
+    width: 570px;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-right: 15px;
+    overflow-Y: scroll;
+    height: calc((var(--vh, 1vh) * 100) - 140px);
+    transform: translateX(7.5px);
+}
+
+
+.options{
+    margin-bottom: 20px;
+    width: 100%;
+    height: 360px;
+    background: rgba(255,255,255,0.05);
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    border-top: 1px solid rgba(255,255,255,0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.description{
+    width: 90%;
+    margin: 0px auto;
+    margin-bottom: 20px;
+    /* background: red; */
+    text-align: center;
+    color: rgba(255,255,255,0.8);
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+}
+
+.options.active .description{
+    display: none;
+}
+
+.option_container{
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 10px;
+    width: 250px;
+    height: 150px;
+    float: left;
+    margin-left: 20px;
+    overflow: hidden;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.option_container.full_width{
+    width: 520px;
+    height: 70px;
+    margin-top: 15px;
+}
+
+
+.option_container:hover {
+    cursor: pointer;
+}
+
+.options_container img{
+    position: absolute;
+}
+
+
+.options_title{
+    position: absolute;
+    z-index: 1;
+    font-size: 20px;
+    transition: 1s;
+    text-align: center;
+}
+
+
+.theoryCraft{
+    width: 100%;
+    height: 300px;
+}
+
+.theoryTitle{
+    width: 570px;
+    margin: 15px auto;
+    height: 45px;
+    display:flex;
+    justify-content: right;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.toggle_arrow{
+    width: 40px;
+    height: 40px;
+}
+
+.titletext{
+    font-size: 24px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(3%,-2px);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgba(255,255,255,0.8);
+}
+
+.toggle_arrow i{
+    width: 100%;
+    height: 100%;
+    transform: translate(0px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    user-select: none;
+}
+
+.toggle_container{
+    width: 100%;
+    height: 280px;
+}
+
+
+.options.active .toggle_container{
+    display: none;
+}
+
+.options.active{
+    height: 50px;
+}
+
+.options.active .toggle_arrow{
+    transform: rotate(180deg);
+    transition: 0.5s;
+}
+
+.option_container img{
+    filter: blur(2px);
+    opacity: 0.7;
+    height: 100%;
+    width: 200%;
+}
+
+
+
+.options_container:hover{
+    cursor: pointer;
+}
+
+
+.options_title i{
+    transform: translate(0px);
+}
+
+
+
+
+.option_container:hover{
+    transform: translateY(-3px);
+}
+
+
+.option_container img{
+    opacity: 0.7;
+
+}
+
+
+.full_width_title{
+    position: absolute;
+    font-size: 20px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+
+.description{
+    
+}
+
+
+
+@media (hover:none){
+    
+
+    .option_container img{
+        filter: blur(4px);
+        
+    }
+
+
+   
+}
+
+
+@media (min-width: 1460px){
+    .content_container{
+        width: 1170px;
+        
+    }
+    .options{
+        width: 570px;
+        float: left;
+    }
+    .options:nth-child(2){
+        margin-left: 20px;
+    }
+    .options:nth-child(3){
+        transform: translateX(calc(50% + 10px));
+    }
+    .toggle_arrow{
+        display: none;
+    }
+    .titletext{
+        transform: translate(0px);
+    }
+}
+
+@media (max-width: 740px){
+    .content_container{
+        width: 300px;
+        
+    }
+    .theoryTitle{
+        width: 300px;
+        margin-top: 15px;
+    }
+    .options{
+        height: 555px;
+    }
+    .option_container{
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    .titletext{
+        transform: translate(3%,0);
+    }
+    .toggle_arrow{
+        transform: translateX(-20px);
+    }
+    .options.active .toggle_arrow{
+        transform: translateX(-20px) rotate(180deg);
+    }
+    .options.active .theoryTitle{
+        margin-bottom: 15px;
+    }
+    .options.active{
+        height: 50px;
+    }
+    .option_container.full_width{
+        width: 250px;
+    }
+}
+
+.options_watermark{
+    position: absolute;
+    color: rgba(255,255,255,0.1);
+    left: 0%;
+    transform: translate(-10%,-10%);
+    top: 0%;
+}  
+
+.options_watermark.tc{
+    font-size: 120px;
+
+}
+
+.options_watermark.ga img{
+    width: 120px;
+    height:120px;
+    filter: invert(100%) brightness(100%);
+    opacity: 0.1;
+}
+
+

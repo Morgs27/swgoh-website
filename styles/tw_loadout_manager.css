@@ -1,0 +1,551 @@
+* {
+    font-family: 'Raleway', sans-serif;
+}
+
+.create_loadout{
+    width: 240px;
+    /* background: rgba(255,255,255,0.05);
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    height: 45px; */
+    margin: 0 auto;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    margin-top: 15px;
+    padding-right: 5px;
+    transition: 0.5s;
+    position: relative;
+}
+
+.create_loadout i {
+    border-radius: 50%;
+    /* background: rgba(255,255,255,0.3); */
+    width: 40px;
+    height: 40px;
+    transform: translate(0px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: rgba(255,255,255,0.7);
+    margin-right: 10px;
+}
+
+.create_loadout i::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    border-radius:  20px;
+    background: rgba(255,255,255,0.3);
+    transition: 0.5s ease-in-out;
+}
+
+.create_loadout:hover i::after{
+    width: 245px;
+}
+
+.create_loadout:hover{
+    transform:translateY(-1px);
+    cursor: pointer;
+}
+
+.create_loadout.active i::after{
+    width: 285px;
+    left: -20px;
+
+}
+
+.create_loadout.active i{
+    color: transparent;
+}
+.create_loadout.active{
+    color: transparent;
+
+}
+
+.create_button{
+    position: absolute;
+    transform: translate(-2px,2px) scaleX(0);
+    transition-delay: 0s;
+    transition: 0.1s;
+    transform-origin: left;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.create_loadout.active .create_button{
+    transform: translate(-2px,2px)  scaleX(1);
+    transition-delay: 0.5s;
+}
+
+.create_input{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%,-50%) scaleX(0);
+    transition: 0.5s;
+    transform-origin: left;
+    width: 200px;
+    height: 35px;
+    background: transparent;
+    outline: none;
+    color: white;
+    border: none;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+
+.create_input::placeholder{
+    color: white;
+}
+
+.create_loadout.active .create_input{
+    transform:translate(-50%,-50%) scaleX(1);
+
+}
+
+.toggle_arrow.plus{
+    left: 5px;
+    font-size: 30px;
+    color: rgba(255,255,255,0.7);
+
+}
+
+.toggle_arrow.plus:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.content_container{
+    width: 600px;
+    height: calc((var(--vh, 1vh) * 100) - 250px);
+    margin: 0 auto;
+    margin-top: 20px;
+    padding-right: 30px;
+}
+
+.loadouts_container{
+    float: left;
+    width: 600px;
+    margin-bottom: 30px;
+}
+
+.loadout_title{
+    width: 100%;
+    height: 45px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid white;
+    font-size: 20px;
+    border-radius: 5px 5px 0px 0px;
+    margin-bottom: 10px;
+}
+
+
+
+.loadouts{
+    width: 100%;
+    overflow-y: scroll;
+    height: calc(100% - 100px);
+    transition: 0.5s;
+    padding-bottom: 25px;
+    margin: 0 auto;
+    
+}
+
+.loadouts.active{
+    height: 0px;
+    padding: 0px;
+}
+
+.loadout{
+    width: 95%;
+    height: 70px;
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    position: relative;
+}
+
+.toggle_arrow{
+    position: absolute;
+    right: 5px;
+    transition: 0.5s;
+   
+}
+
+.toggle_arrow i {
+    transform: translate(0px);
+}
+
+.toggle_arrow.active{
+    transform: rotate(180deg);
+    
+}
+
+/* .title{
+    position: relative;
+}
+
+.title.my::after{
+    content: "Hidden From Guild";
+    position: absolute;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    top: 40%;
+    left: 102%;
+    width: 200px;
+} */
+
+
+/* Loadout */
+
+.loadout_text{
+    width: 300px;
+    height: 100%;
+    background: rgba(27, 29, 31,0.9);
+    border: 1px solid rgba(255,255,255,0.7);
+    border-right: none;
+    text-align: center;
+    position: relative;
+    
+
+}
+
+.loadout_name{
+    margin: 5px;
+    margin-bottom: 5px;
+    margin-top: 13px;
+    font-size: 19px;
+    transition: 0.5s;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(255,255,255,0.7);
+    font-weight: 10;
+}
+
+.loadout_dates{
+    margin-left: 5px;
+    margin-top: 5px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    transition: 0.5s;
+}
+
+.loadout_navigation{
+    height: 100%;
+    width: 40px;
+    background: rgb(27, 29, 31,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-left: none;
+}
+
+.loadout_navigation::before{
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 35px;
+    background: rgba(255,255,255,0.3);
+    left: 0;
+}
+
+.loadout_navigation span{
+    border-radius: 50%;
+    width: 7px;
+    height: 7px;
+    background: rgba(255,255,255,0.5);
+    transition: 0.5s;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loadout_navigation:hover .loadout_navigation span{
+    background: rgba(255,255,255,0.7);
+}
+.loadout_navigation:hover{
+    cursor: pointer;
+}
+
+
+.loadout_navigation span:nth-child(1){
+    transform: translateY(-12px);
+}
+
+.loadout_navigation span:nth-child(3){
+    transform: translateY(12px);
+}
+
+
+.loadout_navigation.active{
+    width: 180px;
+}
+
+.loadout_navigation.active span{
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,0.1);
+}
+
+
+
+.loadout_navigation.active span:nth-child(1){
+    transform: translateY(0) translateX(-50px);
+}
+
+.loadout_navigation.active span:nth-child(3){
+    transform: translateY(0) translateX(50px);
+}
+
+
+
+.loadout_navigation span i{
+    transition: 0.5s;
+    font-size: 0px;
+    color: black;
+}
+
+.loadout_navigation.active span i{
+    font-size: 20px;
+    color: rgba(255,255,255,0.5);
+}
+
+.loadout_navigation.active span:hover{
+    border: 1px solid white;
+}
+
+.loadout_navigation.active .delete:hover{
+    border: 1px solid rgb(180, 51, 51,0.7);
+}
+
+.justeye{
+    color: rgba(255,255,255,0.7);
+
+}
+
+.justeye:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.loadout_navigation.active span:hover::after,
+.justeye:hover::after
+{
+    content : "Remove From Guild View";
+    position: absolute;
+    /* transform: translate(-40px,30px); */
+    top: 88%;
+    right: 88%;
+    width: 80px;
+    background: rgb(27, 29, 31);
+    padding: 5px;
+    border-radius: 10px 0px 10px 10px;
+    border: 1px solid rgba(255,255,255,0.3);
+    text-align: center;
+    z-index: 1000;
+}
+
+.justeye:hover::after{
+    content: "View Loadout";
+    top: 65%;
+    right: 65%;
+}
+
+/* .loadouts.overflow .loadout_navigation.active span:hover::after{
+    bottom: 88%;
+    top: 0%;
+    border-radius: 10px 10px 0px 10px;
+} */
+.loadout_navigation.active span:nth-child(1):hover::after{
+    width: 120px;
+}
+.loadout_navigation.active .edit:hover::after{
+    content: "Edit Loadout"
+}
+.loadout_navigation.active .delete:hover::after{
+    content: "Delete Loadout";
+    border: 1px solid rgb(180, 51, 51,0.7);
+}
+
+.loadout_navigation.active .make_visible:hover::after{
+    content: "Make Visible to Guild";
+    
+}
+
+.loadout_navigation.active .remove_visible:hover::after{
+    content: "Remove From Guild View";
+    
+}
+
+.loadout_navigation.active .view:hover::after{
+    content: "View Loadout";
+    
+}
+
+.loadout_navigation.active .favorite:hover::after{
+    content: "Favorite Loadout";
+    
+}
+
+.loadout.favorite .loadout_navigation.active .favorite:hover::after{
+    content: "Unfavorite Loadout"
+}
+
+.star {
+    color: gold;
+    position: absolute;
+    left:0;
+    top: 0;
+    transform: translate(-50%,-50%);
+    font-size: 22px;
+    display: none;
+}
+
+.loadout.favorite .star{
+    display: flex;
+    
+}
+
+
+
+@media (min-width: 1100px){
+    .content_container{
+        width: 900px;
+    }
+    .loadouts_container{
+        width: 400px;
+    }
+    .loadouts_container{
+        margin-left: 30px;
+        margin-right: 10px;
+    }
+    .loadout_text{
+       width: 200px; 
+    }
+    .toggle_arrow{
+        display: none;
+    }
+}
+
+@media (min-width: 1350px){
+    .content_container{
+        width: 1100px;
+    }
+    .loadouts_container{
+        width: 500px;
+    }
+    .loadouts_container{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .loadout_text{
+        width: 300px; 
+     }
+}
+
+@media (min-width: 1600px){
+    .content_container{
+        width: 1300px;
+}
+    .loadouts_container{
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 600px;
+    }
+    .loadout_text{
+        width: 300px; 
+     }
+}
+
+@media (max-width: 800px){
+    .content_container{
+        width: 100%;
+}
+    .loadouts_container{
+        width: 100%;
+    }
+    .loadout_text{
+        width: calc(100% - 180px );
+    }
+}
+
+@media (max-width: 550px){
+    .content_container{
+        width: 100%;
+}
+    .loadouts_container{
+        width: 100%;
+    }
+    .loadout_text{
+        width: calc(100% - 40px);
+        transition: 0.5s;
+    }
+    .loadout.active .loadout_text{
+        width: 10px;
+        transition: 0.5s;
+        white-space: nowrap;
+    }
+
+    .loadout_dates,.loadout_name{
+        white-space: nowrap;
+    }
+
+    .loadout.active .loadout_name,
+    .loadout.active .loadout_dates{
+        transform: scaleX(0);
+        white-space: nowrap;
+
+    }
+
+    
+}
+
+
+.loadout.visible{
+    opacity: 0.3;
+    position: relative;
+}
+
+
+.loadout.visible::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 105%;
+    left: 0;
+    top: 0;
+}
+
+.loadout.hide{
+    display: none;
+}
+
+.type_selector.no_show{
+	display: none !important;
+}
+
+
+
