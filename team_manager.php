@@ -381,6 +381,7 @@ else {
 	echo "<div class = 'teams' >";
 	while ($data = $result->fetch_assoc()) {
 		
+		print_r($data) ;
 		
 		echo "<div class='team_container'>";
 		echo "<div class = 'team_background chars_$link'><img src='images/battle$link.PNG'></div>";
