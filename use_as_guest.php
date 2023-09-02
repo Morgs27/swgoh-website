@@ -46,7 +46,7 @@ if (isset($_GET['code'])){
         if ($user['ally_code'] == $allycode){
             $guest_acc_name = $user['username'];
         }
-    }
+    } 
 
     $_SESSION['guest'] = $code;
     $_SESSION['Username'] = $guest_acc_name;
