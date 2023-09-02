@@ -120,6 +120,7 @@ function calculate_player_data($data,$username){
 
 
 function getPlayerInfo_new($username,$conn){
+	echo 'getting player info...';
 	$sql = "SELECT * FROM user_character_data WHERE Username = '$username'";
 	$result = $conn->query($sql);
 	$characters = array();
@@ -129,12 +130,17 @@ function getPlayerInfo_new($username,$conn){
 		// $stats = json_decode($json_stats_base);
 		// $stats_base = new stats;
 		// $stats_base->set_stats($stats->)
+		print_r($data);
+		
 		$character->set_values_character($data['id'],$data['defId'],$data['nameKey'],$data['rarity'],$data['level'],$data['gear'],$data['gp'],$data['relic'],$data['zetas'],$data['omicrons'],
 		$data['stats_base'],$data['stats_mods'],$data['mods'],$data['speed'],$data['health'],$data['protection'],$data['tenacity'],$data['potency'],$data['special_damage'],$data['physical_damage'],$data['ultimate']);
 		
+
+		print_r($characters);
 		array_push($characters,$character);
 		
 	}
+	print_r($characters);
 	return $characters;
 }
 
