@@ -372,7 +372,6 @@ else {
 
 	$result = $conn->query($sql);
 
-	print_r($result);
 
 	if (mysqli_num_rows($result) == 0){
 
@@ -401,7 +400,6 @@ else {
 		
 		echo "<div class='team_characters' >";
 		echo"<div class = 'char_1'>";
-		echo 'Displaying Character 1';
 
 		display_character_new($conn,get_char_info ($conn, $user_characters, $data['LeaderID'] ),$dummy_array);
 		echo"</div><div class = 'char_2'>";
