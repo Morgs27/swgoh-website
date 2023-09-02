@@ -123,7 +123,7 @@ function getPlayerInfo_new($username,$conn){
 	echo 'getting player info... for ' . $username;
 	$sql = "SELECT * FROM user_character_data WHERE Username = '$username'";
 	$result = $conn->query($sql);
-	print_r($result);
+
 	$characters = array();
 	while ($data = $result->fetch_assoc()) {
 		$character = new character_new;
@@ -131,17 +131,17 @@ function getPlayerInfo_new($username,$conn){
 		// $stats = json_decode($json_stats_base);
 		// $stats_base = new stats;
 		// $stats_base->set_stats($stats->)
-		print_r($data);
+
 
 		$character->set_values_character($data['id'],$data['defId'],$data['nameKey'],$data['rarity'],$data['level'],$data['gear'],$data['gp'],$data['relic'],$data['zetas'],$data['omicrons'],
 		$data['stats_base'],$data['stats_mods'],$data['mods'],$data['speed'],$data['health'],$data['protection'],$data['tenacity'],$data['potency'],$data['special_damage'],$data['physical_damage'],$data['ultimate']);
 		
 
-		print_r($characters);
+	
 		array_push($characters,$character);
 		
 	}
-	print_r($characters);
+
 	return $characters;
 }
 
@@ -173,9 +173,6 @@ function total_stat($base,$mods,$property){
 
 function display_character_new($conn,$character,$current_team){
 
-	echo 'Here I am here';
-
-	print_r($character);
 
 	$edit = false;
 	if (isset($current_team[1])){
@@ -212,8 +209,6 @@ function display_character_new($conn,$character,$current_team){
 	$sql = "SELECT * FROM character_data WHERE base_id = '$defID'";
 	$result = $conn->query($sql);
 	while ($data = $result->fetch_assoc()) {
-
-		print_r($data);
 
 		$name = $data['name'];
 		$img = $data['img'];
@@ -482,10 +477,6 @@ function display_character_new($conn,$character,$current_team){
 
 	$hp = number_format($character->health + $character->protection);
 	
-
-
-	print_r($stats_base);
-	print_r($stats_mods);
 
 	if (isset($stats_base->Armor)){
 		if (isset($stats_mods->Armor)){

@@ -7,8 +7,6 @@ check_logged_in();
 
 $in_guild = check_in_guild($conn,$_SESSION['Username']);
 
-print_r($_SESSION['user_info_class']);
-
 if (isset($_GET['to_notify'])){
 	?>
 	<div class="pro_notify_popup">

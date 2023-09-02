@@ -159,6 +159,7 @@ foreach($units as $unit){
             $total_gear += 1;
         }
 
+
         $total_omicrons += $omicrons;
         $total_zetas += $zetas;
 
