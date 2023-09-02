@@ -201,8 +201,8 @@ if ($_SESSION["Username"] == "Morgs27"){
         //  header("location:admin.php");
         ?>
         <script>
-        let username = <?php echo $username; ?>;
-        let ally_code = <?php echo $ally_code; ?>;
+        let username = '<?php echo $username; ?>';
+        let ally_code = '<?php echo $ally_code; ?>';
         console.log('Sending to ', username , ally_code)
         $.ajax({
             url: "includes/refresh_user_data.inc.php",
