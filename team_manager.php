@@ -1,5 +1,10 @@
 <?php
     ob_start();
+
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
     include 'functions/class_init.php';
     include 'classes/character_class.php';
     include 'classes/user_new.php';
@@ -382,7 +387,7 @@ else {
 	while ($data = $result->fetch_assoc()) {
 		
 		print_r($data) ;
-		
+
 		echo "<div class='team_container'>";
 		echo "<div class = 'team_background chars_$link'><img src='images/battle$link.PNG'></div>";
 
