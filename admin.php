@@ -203,17 +203,16 @@ if ($_SESSION["Username"] == "Morgs27"){
         <script>
         let username = <?php echo $username; ?>;
         let ally_code = <?php echo $ally_code; ?>;
+        console.log('Sending to ', username , ally_code)
         $.ajax({
             url: "includes/refresh_user_data.inc.php",
             method: "POST",    
             data: {username: username, ally_code: allycode},
             success: function(data){
                 console.log(data);
-                success_refresh(); 
             },
             error: function(errMsg) {
-                alert(JSON.stringify(errMsg));
-                fail_refresh();
+                console.log(errMsg)
             }
         });
         </script>

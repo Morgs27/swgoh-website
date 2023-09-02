@@ -1,12 +1,15 @@
 <?php
-// set_time_limit(0);
-// ignore_user_abort();
+set_time_limit(0);
+ignore_user_abort();
 
 include '../functions/db_connect.php';
 
 // Get Username From Post Data
 $username = $_POST['username'];
 $ally_code = $_POST['ally_code'];
+
+echo $username;
+echo $ally_code;
 
 // Write to database progress
 $str = $username . ":Fetching Data";
