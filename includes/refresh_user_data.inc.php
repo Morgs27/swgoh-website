@@ -143,11 +143,11 @@ foreach($units as $unit){
         $stats = json_encode($stats);
 
         $sql_c = "INSERT INTO user_character_data 
-                    (Username,defId,nameKey,rarity,level,gear,gp,relic,zetas,
+                    (Username,defId,id,nameKey,rarity,level,gear,gp,relic,zetas,
                     omicrons,stats_base,speed,health,protection,
                     physical_damage,special_damage,potency,tenacity,equiped,
                     legend,ultimate,alignment)
-                VALUES ('$username','$defId','$nameKey','$rarity',
+                VALUES ('$username','$defId','','$nameKey','$rarity',
                     '$level','$gear','$gp','$relic','$zetas','$omicrons','$stats',
                     '$speed','$health','$protection','$physical_damage',
                     '$special_damage','$potentcy','$tenacity','$equiped','$legend','$ultimate',
