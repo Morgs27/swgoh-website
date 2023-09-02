@@ -38,7 +38,7 @@
 
         }
         $result = $conn->query($sql);
-		header("location:tw_loadout_manager.php");
+		// header("location:tw_loadout_manager.php");
         }
 	}
 
