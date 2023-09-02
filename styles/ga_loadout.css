@@ -1,0 +1,1464 @@
+* {
+    --background: #161b22;
+    --sector:#20405d ;
+    --outline: #4880a4;
+  }
+  
+  
+  .ga_map_container{
+    width: 500px;
+    height: 390px;
+    position: relative;
+    
+    clip-path: polygon(100% 100%, 100% 0%, 8% 0%, 0% 8%, 0% 92%, 8% 100%);
+    background: white;
+    overflow: fixed;
+    
+  }
+  
+  .border_polygon{
+    position: relative;
+    background: var(--background);
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    top: 1px;
+    left: 1px;
+    clip-path: polygon(100% 100%, 100% 0%, 8% 0%, 0% 8%, 0% 92%, 8% 100%);
+  }
+  
+  .inner_polygon{
+    position: relative;
+    background: var(--outline);
+    width: calc(100% - 5%);
+    height: calc(100% - 5%);
+    top: 2.5%;
+    left: 2.5%;
+    clip-path: polygon(100% 100%, 100% 0%, 8% 0%, 0% 8%, 0% 92%, 8% 100%);
+    overflow: fixed;
+  }
+  
+  .inner_inner_polygon{
+    position: relative;
+    background: var(--outline);
+    width: calc(100% - 1%);
+    height: calc(100% - 1%);
+    top: 0.5%;
+    left: 0.5%;
+    clip-path: polygon(100% 100%, 100% 0%, 8% 0%, 0% 8%, 0% 92%, 8% 100%);
+  }
+  
+  
+  
+  .top_left{
+    left: 0;
+  }
+  
+  .top_right{
+    width: 48%;
+    height: 48%;
+    right: 0;
+  }
+  
+  
+  .bottom_right{
+    right: 0;
+    bottom: 0;
+  }
+  
+  .bottom_left{
+    bottom: 0;
+    left: 0;
+  }
+  
+  .ga_section{
+    background: var(--sector);
+    width: 48%;
+    height: 48%;
+    position: absolute;
+    transition: 0.3s;
+  }
+  
+  .ga_section:hover{
+    background: rgb(54, 83, 97);
+    cursor: pointer;
+  }
+
+ 
+  .ga_section.active{
+      background: rgb(65, 124, 153);
+  }
+
+  .ga_section.active .territory_number{
+      border: 1px solid rgba(255,255,255,0.3);
+  }
+  
+  .territory_content{
+      width: 200px;
+      height: 100px;
+      /* background: red; */
+      margin: 0px auto;
+      margin-top: 15px;
+  }
+
+  .ship{
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(255,255,255,0.3);
+    margin: 0 10px;
+    }
+
+  .territory_content.ships_1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 
+  .territory_content.ships_2,.territory_content.ships_3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  } 
+  .territory_content.ships_3 .ship{
+     margin: 0 5px;
+     width: 55px;
+     height: 55px;
+  }
+
+  .char{
+      
+      border: 2px solid rgba(255,255,255,0.3);
+      height: 45px;
+  }
+
+  .territory_content.t1_chars{
+      /* background: red; */
+      display: grid;
+      width: 110px;
+      height: 110px;
+      margin: 0px;
+      margin-left: 5px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-gap: 5px;
+  }
+
+  .territory_content.B2_chars{
+    /* background: red; */
+    display: grid;
+    width: 110px;
+    height: 110px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 5px;
+    }
+    .territory_content.B2_chars .char:nth-child(3){
+        transform: translateX(55%);
+    }
+  
+.B2_chars{
+    margin-top: 5px;
+}
+
+  .territory_number{
+      width: 90px;
+      height: 50px;
+      margin: 5px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      /* background: blue; */
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+  }
+
+  .territory_number i{
+      /* transform: rotate(-35deg); */
+      color: rgba(255,255,255,0.6);
+  }
+
+  .stat{
+      font-family: Verdana;
+      color: rgba(255,255,255,0.6);
+  }
+
+
+
+  .add_msg{
+      color: rgba(255,255,255,0.4);
+      font-style: italic;
+      text-align: center;
+      display: none;
+      width: 100px;
+      transform: translateY(-10px);
+  }
+
+  .add_msg i{
+      margin-left: 5px;
+  }
+
+  .bottom_right .add_msg, .top_right .add_msg{
+      transform: translate(-40px,-10px);
+  }
+
+  .territory_content.none .add_msg{
+      display: block;
+  }
+
+  /* .top_right .territory_number{
+      margin: 5px 8px;
+  } */
+
+  .middle_line_stat{
+      height: 50%;
+      width: 1px;
+      /* background: rgba(255,255,255,0.4); */
+      margin: 0 8px;
+  }
+  
+  .circle{
+    position: absolute;
+    right: 0;
+    height: 50%;
+    width: 45%;
+    background: var(--background);
+    border-radius: 50%;
+    top: 50%;
+    transform: translate(50%,-50%);
+    z-index: 1;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(--outline);
+  }
+  
+  .inner_circle{
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    overflow: hidden;
+  /*   border: 2px solid rgba(255,255,255,0.7); */
+  }
+  
+  .inner_circle img{
+    transform:translate(-102%,0) scale(1.89,2.3)
+  }
+  
+  .aaa{
+    position: absolute;
+    width: 83%;
+    height: 10px;
+    background: var(--background);
+    right: 100px;
+    top: calc(50% - 5px);
+    z-index: 1;
+  }
+  
+  .bbb{
+    position: absolute;
+    width: 12px;
+    height: 100%;
+    background: var(--background);
+    left: calc(50% - 6px);
+    z-index: 1;
+  }
+
+  .ccc{
+    position: absolute;
+    width: 3px;
+    height: 47.25%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--background);
+    left: 96.75%;
+    z-index: 1;
+  }
+
+.ga_container{
+    width: 100%;
+    height: calc((var(--vh, 1vh) * 100) - 180px);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ga_content{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.ga_content.hidden{
+    filter: blur(3px) brightness(40%);
+    opacity: 0.3;
+}
+
+.ga_content.hidden2{
+    filter: blur(3px) brightness(40%);
+    opacity: 0.3;
+}
+
+.rank_selector_container{
+    position: absolute;
+    width: 700px;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 1px solid rgba(255,255,255,0.4);
+    border-right: 1px solid rgba(255,255,255,0.4);
+    padding: 13px 5px;
+    background: rgba(255,255,255,0.05);
+    transform-origin: center;
+    transition: 0.3s;
+    z-index: 5;
+    top: 70px;
+    overflow: hidden;
+    opacity: 0;
+    display: none;
+}
+
+
+
+.rank_background{
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    transform: translate(-23%,-18%) ;
+    filter: blur(5px) brightness(70%);
+
+
+}
+
+.rank_selector_container.active{
+    opacity: 1;
+    display: flex;
+}
+
+.rank{
+    width: 100px;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 10px;
+    padding: 5px;
+    border-radius: 5px;
+    }
+
+.rank img{
+    width: 90%;
+    height: 80%;
+}
+
+.rank_title{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.rank:hover{
+    background: rgba(255,255,255,0.1);
+    cursor: pointer;
+}
+
+.rank.active{
+    background: rgba(255,255,255,0.1);
+}
+
+@media (max-width: 915px){
+    .rank_selector_container{
+        width: 500px;
+        height: 260px;
+        display: none;
+        grid-gap: 20px;
+        grid-template-rows: 110px 110px;
+        grid-template-columns: repeat(3,130px);
+    }
+    .rank_selector_container.active{
+        display: grid;
+    }
+    .rank:nth-child(6){
+        transform: translateX(80px);
+    }
+    .rank:nth-child(6):hover{
+        transform: translate(80px,-3px);
+    }
+    .rank:nth-child(7){
+        transform: translateX(80px);
+    }
+    .rank:nth-child(7):hover{
+        transform: translate(80px,-3px);
+    }
+}
+
+@media (max-width: 650px){
+    .rank_selector_container{
+        width: 300px;
+        height: 390px;
+        display: none;
+        grid-gap: 25px;
+        grid-template-rows: 110px 110px 110px;
+        grid-template-columns: repeat(2,130px);
+    }
+    .rank_selector_container.active{
+        display: grid;
+    }
+    .rank:nth-child(6){
+        transform: translateX(0);
+    }
+    .rank:nth-child(6):hover{
+        transform: translate(0,-3px);
+    }
+    .rank:nth-child(7){
+        transform: translateX(80px);
+    }
+    .rank:nth-child(7):hover{
+        transform: translate(80px,-3px);
+    }
+}
+
+@media (max-width: 390px){
+    .rank_selector_container{
+        width: 250px;
+        height: 390px;
+        display: none;
+        grid-gap: 10px;
+        grid-row-gap: 25px;
+        grid-template-rows: 110px 110px 110px;
+        grid-template-columns: repeat(2,120px);
+    }
+    .rank_selector_container.active{
+        display: grid;
+    }
+    .rank:nth-child(6){
+        transform: translateX(0);
+    }
+    .rank:nth-child(6):hover{
+        transform: translate(0,-3px);
+    }
+    .rank:nth-child(7){
+        transform: translateX(65px);
+    }
+    .rank:nth-child(7):hover{
+        transform: translate(65px,-3px);
+    }
+}
+
+#zeta_number_relic,#display_relic{
+    font-family: Verdana;
+}
+
+.export{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.export_open_text{
+    position: absolute;
+    transform: translate(-30px,-16px);
+    height: 100%;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.export img{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    z-index: 2;
+    /* filter: grayscale(100%); */
+    filter: blur(0px);
+    transform: translate(15px,-11px)
+}
+
+.content_cover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 3
+}
+
+.content_cover.active{
+    display: block;
+}
+
+
+@media(max-width: 580px){
+    .export_open_text{
+        display: none;
+    
+    }
+
+    .export img{
+        transform: translate(-12px,-12px);
+    }
+}
+
+
+.left_section{
+    width: 50%;
+    float: left;
+    height: 100%;
+    /* background: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* .middle_line{
+    position: absolute;
+    width: 2px;
+    height: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: rgba(255,255,255,0.3);
+} */
+
+.right_section{
+    width: 50%;
+    float: left;
+    height: calc(100% - 20px);
+}
+
+.right_title{
+    width: 100%;
+    height: 40px;
+    background: var(--sector);
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    box-shadow: 
+    0px 0px 0px 2px var(--background),
+    0px 0px 0px 3px var(--outline),
+    0px 0px 0px 4px rgba(255,255,255,0.4)
+    ;
+    position: relative;
+}
+
+.clear_territory{
+    position: absolute;
+    right: 10px;
+    color: rgba(255,255,255,0.6);
+}
+
+.clear_territory:hover{
+    color: rgba(255,0,0,0.7);
+    cursor: pointer;
+}
+
+.territory_number_title{
+    position: absolute;
+    right: 5px;
+    width: 100px;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    font-size: 16px;
+    border-radius: 2px;
+}
+
+.teams{
+    height: 100%;
+}
+  
+
+.map_conatiner{
+    width: 500px;
+    height: 500px;
+    background: red;
+}
+
+.delete_team_link:hover{
+    cursor: pointer;
+}
+
+.territory_content.none{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom_right .territory_content.none .add_msg{
+    transform: translate(0px);
+}
+
+.top_right .territory_content.none .add_msg{
+    transform: translate(0px);
+}
+
+.bottom_left .territory_content.none {
+    height: 105px;
+}
+
+.toggle_options{
+    width: 200px;
+    height: 50px;
+    margin: 5px auto;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    background: var(--sector);
+    box-shadow: 0px 0px 0px 1px var(--outline),
+    0px 0px 0px 7px var(--background),
+    0px 0px 0px 8px rgba(255,255,255,0.6)
+    ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: red; */
+    margin-top: 30px;
+
+}
+
+.toggle_options:hover{
+    cursor: pointer;
+    background: rgba(255,255,255,0.2);
+}
+  
+.toggle_options.none{
+    width: 300px;
+    height: 60px;
+    text-align: center;
+    font-family: Verdana;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.7);
+}
+
+.team_info{
+    font-family: Verdana;
+}
+
+.add_team_modal{
+    position: absolute;
+    /* background: rgb(54, 83, 97); */
+    width: 800px;
+    height: 100%;
+    height: calc(100% - 10px);
+    left: 50%;
+    margin-top: 10px;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: none;
+
+}
+
+@media (max-width: 925px){
+    .add_team_modal{
+        width: 100%;
+    }
+}
+
+.modal_cover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 3
+}
+
+.modal_cover.active{
+    display: block;
+}
+
+.add_team_title{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    overflow: hidden;
+    position: relative;
+    font-size: 22px;
+    background: var(--sector);
+    box-shadow: 
+    0px 0px 0px 2px var(--background),
+    0px 0px 0px 3px var(--outline),
+    0px 0px 0px 4px rgba(255,255,255,0.4)
+    ;
+    margin-bottom: 15px;
+}
+
+.add_team_title img{
+    z-index: -2;
+    filter: blur(5px) brightness(60%);
+    position: absolute;
+    transform: translate(10% ,10%);
+}
+
+.add_team_teams{
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+
+.team_container.hover:hover{
+    /* border: 1px solid white; */
+    cursor: pointer;
+    
+}
+
+.team_container.hover:hover .team_info{
+    /* border: 1px solid white; */
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+}
+
+.team_container.hover:hover .team_background img{
+    /* border: 1px solid white; */
+    filter: brightness(70%);
+}
+
+.team_container_ships.hover:hover .team_background img{
+    filter: brightness(130%);
+}
+
+.close_options{
+    right: 5px;
+    top: 5px;
+    z-index: 3;
+}
+
+
+.teams .team_container:nth-child(1){
+    margin-top: 0px;
+}
+
+
+.in_territory{
+    overflow: hidden;
+    height: calc(100% - 40px);
+    width: 100%;
+}
+
+/* Medias */
+
+@media (max-width:1880px){
+    .left_section{
+        width: auto;
+        margin-right: 40px;
+    }
+    .right_section{
+        width: calc(100% - 540px);
+    }
+    .right_title{
+        max-width: 780px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 1600px){
+    .team_container{
+		height: auto;
+		
+	}
+
+    .right_section .teams{
+		width: calc(100% - 15px);
+        padding-bottom: 10px;
+	}
+	.right_section .team_characters{
+		height: 320px;
+		width: 420px;
+		margin-left: auto;
+		margin-right: auto;
+
+	}
+	.right_section .team_characters_ships{
+		width: 550px;
+
+
+	}
+	.right_section .team_characters_ships .ship_profile{
+
+		margin-right: 5px;
+	}
+	.right_section .team_characters_ships .capital_ship_team .ship_profile{
+		margin-bottom: 0px;
+
+	}
+	.right_section .team_characters_ships .ship_team_small .ship_profile{
+		width: 120px;
+		height: 160px;
+
+		margin-bottom: 5px;
+		
+		}
+    .right_section .team_container_ships {
+		height: 360px;
+	}
+	.right_section .team_characters_ships .ship_team_small #rarity_img_ship{
+		top: -150px;
+	}
+	.right_section .team_characters_ships .ship_team_small .ship_img_profile{
+		width: 110px;
+		height: 110px;
+	}
+	.right_section .team_characters_ships .ship_team_small .character_profile_ship{
+		width: 120px;
+		height: 40px;
+		top: -35px;
+	}
+	.right_section .team_characters_ships .ship_team_small .character_profile_profile_ship{
+		width: 40px;
+		height: 80px;
+
+	}
+	.right_section .team_characters_ships .ship_team_small .character_profile_profile_ship img{
+		width: 40px;
+		height: 40px;
+
+	}
+	.right_section .team_characters .char_4{
+		position: relative;
+		transform: translateX(70px);
+	}
+	.right_section .team_characters .char_5{
+		position: relative;
+		transform: translateX(70px);
+	}
+}
+
+@media (max-width: 1400px){
+    .right_section  .team_container_ships{
+		height: 480px;
+	}
+	.right_section  .team_characters_ships{
+		width: 380px;
+
+		
+	}
+	.right_section  .team_characters_ships .capital_ship_team .ship_profile{
+		margin-left: 115px;
+		margin-right: 40px;
+		margin-bottom: 10px;
+		
+	}
+	.right_section  .team_characters_ships .ship_team_super_small .ship_profile{
+		width: 90px;
+		height: 160px;
+		margin-bottom: 5px;
+		transform: translateY(-20px);
+		
+	}
+	.right_section  .team_characters_ships .ship_team_super_small .ship_profile:hover{
+		transform: translateY(-23px);
+
+	}
+	.right_section  .team_characters_ships .ship_team_super_small #rarity_img_ship{
+		top: -110px;
+		width: 70px;
+		height: 70px;
+	}
+	.right_section  .team_characters_ships .ship_team_super_small .ship_img_profile{
+		width: 80px;
+		height: 80px;
+	}
+	.right_section  .team_characters_ships .ship_team_super_small .character_profile_ship{
+		width: 90px;
+		height: 30px;
+		top: -25px;
+	}
+	.right_section  .team_characters_ships .ship_team_super_small .character_profile_profile_ship{
+		width: 30px;
+		height: 60px;
+
+	}
+	.right_section  .team_characters_ships .ship_team_super_small .character_profile_profile_ship img{
+		width: 30px;
+		height: 30px;
+
+	}
+}
+
+.toggle_show_teams{
+    width: 80%;
+    height: 50px;
+    background: var(--sector);
+    position: fixed;
+    bottom: 30px;
+    left: 10%;
+
+}
+
+@media (max-width: 1220px){
+    .right_section .team_characters_ships{
+		width: 290px;
+
+	}
+	.right_section .team_characters_ships .capital_ship_team .ship_profile{
+		margin-left: 0px;
+		margin-right: 3px;
+		margin-bottom: 5px;
+		
+	}
+
+	.right_section .ship_team_1 .ship_profile{
+		transform: translate(10px,30px);
+	}
+	.right_section .ship_team_1 .ship_profile:hover{
+		transform: translate(10px,27px);
+	}
+	.right_section .ship_team_2 .ship_profile{
+		transform: translateX(28px);
+	}
+	.right_section .ship_team_2 .ship_profile:hover{
+		transform: translate(28px,-3px);
+	}
+	.right_section .ship_team_3 .ship_profile{
+		transform: translateX(38px);
+	} 
+	.right_section .ship_team_3 .ship_profile:hover{
+		transform: translate(38px,-3px);
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_profile{
+		width: 60px;
+		height: 160px;
+		margin-bottom: 5px;
+		transform: translateY(-20px);
+		margin-left: 5px;
+		
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_profile:hover{
+		transform: translateY(-23px);
+
+	}
+	.right_section .team_characters_ships .ship_team_super_small #rarity_img_ship{
+		top: -75px;
+		width: 50px;
+		height: 50px;
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_img_profile{
+		width: 55px;
+		height: 55px;
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_ship{
+		width: 60px;
+		height: 20px;
+		top: -15px;
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_profile_ship{
+		width: 20px;
+		height: 40px;
+
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_profile_ship img{
+		width: 20px;
+		height: 20px;
+
+	}
+}
+
+@media (max-width: 1215px){
+    .right_section  .team_characters{
+		height: 400px;
+		width: 280px;
+	}
+
+	.right_section  .team_characters .char_4{
+		transform: translateX(0px);
+	}
+	.right_section  .team_characters .char_5{
+		transform: translateX(70px);
+	}
+}
+
+.options_options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+.toggle_options.view{
+    display: none;
+}
+
+.close_teams_view{
+    display: none;
+}
+
+@media (max-width: 1100px){
+    .left_section{
+        width: 100%;
+        height: 100%;
+        flex-direction: row;
+    }
+    .ga_map_container{
+        /* transform: scale(0.7); */
+    }
+    .right_section{
+        width: 100%;
+        position: absolute;
+        display: none;
+    }
+    .close_teams_view{
+        display: block;
+    }
+    .right_title{
+        width: 100%;
+        max-width: 100%;
+    }
+    .territory_number_title{
+        left: 5px;
+
+    }
+    .toggle_options.none{
+        width: 200px;
+        height:100px;
+    }
+
+    .toggle_options.view{
+        display: flex;
+    }
+    .add_team_title{
+        margin-bottom: 25px;
+    }
+    .right_section .teams{
+        width: 720px;
+    }
+    .right_section .team_container{
+        height: 230px;
+
+    }
+    .right_section .team_characters{
+        height: 142px;
+        width: 100%;
+        margin-left: 10px;
+        margin-right: 0px;
+    }
+
+    .right_section .team_characters .char_4{
+		position: relative;
+		transform: translateX(0);
+	}
+	.right_section .team_characters .char_5{
+		position: relative;
+		transform: translateX(0);
+	}
+
+    .right_section .team_container_ships{
+        height: 420px;
+
+    }
+    .right_section .team_characters_ships{
+        margin-left: 10px;
+
+    }
+    .right_section .team_characters_ships .ship_profile{
+        /* margin: 0px; */
+        margin-right: 20px;
+
+    }
+
+    .right_section .team_characters_ships .capital_ship_team .ship_profile{
+		/* margin: 0px; */
+        margin-bottom: 30px;
+        margin-right: 30px;
+
+	}
+	.right_section .team_characters_ships .ship_team_small .ship_profile{
+		width: 150px;
+		height: 160px;
+        /* margin: 0px; */
+		margin-bottom: 30px;
+        margin-right: 20px;
+	}
+
+	.right_section .team_characters_ships .ship_team_small #rarity_img_ship{
+		top: -187.5px;
+	}
+	.right_section .team_characters_ships .ship_team_small .ship_img_profile{
+		width: 140px;
+		height: 140px;
+	}
+	.right_section .team_characters_ships .ship_team_small .character_profile_ship{
+		width: 150px;
+		height: 50px;
+		top: -40px;
+	}
+	.right_section .team_characters_ships .ship_team_small .character_profile_profile_ship{
+		width: 50px;
+		height: 100px;
+
+	}
+	.right_section .team_characters_ships .ship_team_small .character_profile_profile_ship img{
+		width: 50px;
+		height: 50px;
+
+	}
+    .right_section .team_characters_ships .ship_team_super_small .ship_profile{
+		width: 150px;
+		height: 160px;
+        /* margin: 0px; */
+		margin-bottom:30px;
+        margin-right: 20px;
+		transform: translateY(0px);
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_profile:hover{
+		transform: translateY(0px);
+
+	}
+	.right_section .team_characters_ships .ship_team_super_small #rarity_img_ship{
+		top: -187.5px;
+		width: 100px;
+		height: 100px;
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_img_profile{
+		width: 80px;
+		height: 80px;
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_ship{
+		width: 150px;
+		height: 50px;
+		top: -40px;
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_profile_ship{
+		width: 50px;
+		height: 100px;
+
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_profile_ship img{
+		width: 50px;
+		height: 50px;
+
+	}
+
+
+    /* --- */
+
+    .right_section .ship_team_1 .ship_profile{
+		transform: translate(0);
+	}
+	.right_section .ship_team_1 .ship_profile:hover{
+		transform: translate(0);
+	}
+	.right_section .ship_team_2 .ship_profile{
+		transform: translateX(0);
+	}
+	.right_section .ship_team_2 .ship_profile:hover{
+		transform: translate(0);
+	}
+	.right_section .ship_team_3 .ship_profile{
+		transform: translateX(0);
+	} 
+	.right_section .ship_team_3 .ship_profile:hover{
+		transform: translate(0);
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_profile{
+		/* width: 60px;
+		height: 160px;
+		margin-bottom: 5px;
+		transform: translateY(0);
+		margin-left: 5px; */
+		
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_profile:hover{
+		transform: translateY(0);
+
+	}
+	.right_section .team_characters_ships .ship_team_super_small #rarity_img_ship{
+		/* top: -75px;
+		width: 50px;
+		height: 50px; */
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_img_profile{
+		width: 140px;
+		height: 140px;
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_ship{
+		/* width: 60px;
+		height: 20px;
+		top: -15px; */
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_profile_ship{
+		/* width: 20px;
+		height: 40px; */
+
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_profile_ship img{
+		/* width: 20px;
+		height: 20px; */
+
+	}
+
+
+}
+
+
+
+
+@media (max-width:925px) {
+	.right_section .teams{
+		width: calc(100% - 15px);
+	}
+	.right_section .teamInfo_container{
+		width: 95%;
+	}
+	.right_section .team_container{
+		height: auto;
+	}
+	.right_section .team_characters{
+		height: 320px;
+		width: 420px;
+		margin-left: auto;
+		margin-right: auto;
+
+	}
+	.right_section .team_characters .char_4{
+		position: relative;
+		transform: translateX(70px);
+	}
+	.right_section .team_characters .char_5{
+		position: relative;
+		transform: translateX(70px);
+	}
+
+    .right_section .team_characters_ships{
+		width: 550px;
+
+
+	}
+	.right_section .team_characters_ships .ship_profile{
+
+		margin-right: 5px;
+	}
+	.right_section .team_characters_ships .capital_ship_team .ship_profile{
+		margin-bottom: 0px;
+        margin-right: 5px;
+	}
+	.right_section .team_characters_ships .ship_team_small .ship_profile{
+		width: 120px;
+		height: 160px;
+        margin-right: 5px;
+		margin-bottom: 5px;
+        margin-lefT: 0px;
+		
+		}
+	.right_section .team_container_ships {
+		height: 360px;
+	}
+	.right_section .team_characters_ships .ship_team_small #rarity_img_ship{
+		top: -150px;
+	}
+	.right_section .team_characters_ships .ship_team_small .ship_img_profile{
+		width: 110px;
+		height: 110px;
+	}
+	.right_section .team_characters_ships .ship_team_small .character_profile_ship{
+		width: 120px;
+		height: 40px;
+		top: -35px;
+	}
+	.right_section .team_characters_ships .ship_team_small .character_profile_profile_ship{
+		width: 40px;
+		height: 80px;
+
+	}
+	.right_section .team_characters_ships .ship_team_small .character_profile_profile_ship img{
+		width: 40px;
+		height: 40px;
+
+	}
+}
+
+
+@media (max-width:675px) {
+	.right_section .team_container_ships{
+		height: 480px;
+	}
+	.right_section .team_characters_ships{
+		width: 380px;
+
+		
+	}
+	.right_section .team_characters_ships .capital_ship_team .ship_profile{
+		margin-left: 115px;
+		margin-right: 40px;
+		margin-bottom: 10px;
+		
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_profile{
+		width: 90px;
+		height: 160px;
+		margin-bottom: 5px;
+		transform: translateY(-20px);
+		
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_profile:hover{
+		transform: translateY(-23px);
+
+	}
+	.right_section .team_characters_ships .ship_team_super_small #rarity_img_ship{
+		top: -110px;
+		width: 70px;
+		height: 70px;
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_img_profile{
+		width: 80px;
+		height: 80px;
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_ship{
+		width: 90px;
+		height: 30px;
+		top: -25px;
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_profile_ship{
+		width: 30px;
+		height: 60px;
+
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_profile_ship img{
+		width: 30px;
+		height: 30px;
+
+	}
+}
+
+
+@media (max-width:550px) {
+	.right_section .team_characters_ships{
+		width: 290px;
+
+	}
+	.right_section .team_characters_ships .capital_ship_team .ship_profile{
+		margin-left: 0px;
+		margin-right: 3px;
+		margin-bottom: 5px;
+		
+	}
+
+	.right_section .ship_team_1 .ship_profile{
+		transform: translate(10px,30px);
+	}
+	.right_section .ship_team_1 .ship_profile:hover{
+		transform: translate(10px,27px);
+	}
+	.right_section .ship_team_2 .ship_profile{
+		transform: translateX(28px);
+	}
+	.right_section .ship_team_2 .ship_profile:hover{
+		transform: translate(28px,-3px);
+	}
+	.right_section .ship_team_3 .ship_profile{
+		transform: translateX(38px);
+	} 
+	.right_section .ship_team_3 .ship_profile:hover{
+		transform: translate(38px,-3px);
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_profile{
+		width: 60px;
+		height: 160px;
+		margin-bottom: 5px;
+		transform: translateY(-20px);
+		margin-left: 5px;
+		
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_profile:hover{
+		transform: translateY(-23px);
+
+	}
+	.right_section .team_characters_ships .ship_team_super_small #rarity_img_ship{
+		top: -75px;
+		width: 50px;
+		height: 50px;
+	}
+	.right_section .team_characters_ships .ship_team_super_small .ship_img_profile{
+		width: 55px;
+		height: 55px;
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_ship{
+		width: 60px;
+		height: 20px;
+		top: -15px;
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_profile_ship{
+		width: 20px;
+		height: 40px;
+
+	}
+	.right_section .team_characters_ships .ship_team_super_small .character_profile_profile_ship img{
+		width: 20px;
+		height: 20px;
+
+	}
+}
+
+@media (max-width:550px) {
+	.right_section .team_characters{
+		height: 400px;
+		width: 280px;
+	}
+
+	.right_section .team_characters .char_4{
+		transform: translateX(0px);
+	}
+	.right_section .team_characters .char_5{
+		transform: translateX(70px);
+	}
+}
+
+@media (max-width: 930px){
+    .left_section{
+        flex-direction: column;
+    }
+    .options_options{
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+}
+
+   
+@media (max-width: 650px){
+    .ga_map_container{
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 500px){
+    .ga_map_container{
+        transform: scale(0.7);
+    }
+    .right_title{
+        font-size: 0;
+    }
+    .territory_number_title{
+        position: relative;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 430px){
+    .ga_map_container{
+        transform: scale(0.65);
+    }
+}
+
+.stat_number{
+    font-family: verdana;
+}
+
+
+
