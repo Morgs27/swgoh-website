@@ -37,9 +37,9 @@
             $sql = "INSERT INTO loadouts (loadout_name,created_by,guild_id,active,creation_date) VALUES ('$loadout_name','$username','$guild_id','false','$current_date')";
 
         }
-        echo $sql;
+
         $result = $conn->query($sql);
-		// header("location:tw_loadout_manager.php");
+		header("location:tw_loadout_manager.php");
         }
 	}
 
