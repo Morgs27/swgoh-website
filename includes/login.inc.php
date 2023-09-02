@@ -53,12 +53,12 @@ if (isset($_POST["submit"])) {
 		unset($_SESSION['guest']);
 
 
-		if ($notify == true){
-			header("location:../teams.php?to_notify");
-		}
-		else {
-		header("location:../teams.php");
-		}
+		// if ($notify == true){
+		// 	header("location:../teams.php?to_notify");
+		// }
+		// else {
+		// header("location:../teams.php");
+		// }
 
 
 	
