@@ -400,11 +400,12 @@ else {
 		echo "<a id = '{$data['team_id']}' href='team_builder.php?characters&$link&edit={$data['team_id']}' class = 'edit_team_link' ><i class='fa-solid fa-pen-to-square'></i></a>";
 		echo "</div>";
 		
-		
+		print_r($user_characters);
 
 		echo "<div class='team_characters' >";
 		echo"<div class = 'char_1'>";
 		echo 'Displaying Character 1';
+		print_r(get_char_info($conn, $user_characters, $data['LeaderID']));
 		display_character_new($conn,get_char_info ($conn, $user_characters, $data['LeaderID'] ),$dummy_array);
 		echo"</div><div class = 'char_2'>";
 		display_character_new($conn,get_char_info ($conn, $user_characters, $data['Character2ID'] ),$dummy_array);
