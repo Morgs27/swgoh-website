@@ -19,6 +19,8 @@
 	$rank = get_rank($conn,$username);
 	$guild_id = get_guild($conn,$username);
 
+	echo 'User Info';
+	print_r($_SESSION['user_info_class']);
     $user_characters = $_SESSION['user_info_class'];
     $user_ships = $_SESSION['user_info_ship'];
 
