@@ -1,8 +1,8 @@
 <?php
 // Four variables to connect to the database
-$servername = "localhost:3306";
-$username = "swgohger_Morgs27";
-$password = "Morg=2708";
+$servername = "mysql";
+$username = "root";
+$password = "swgohpassword";
 $dbname = "swgohger_website";
 
 // Create connection
