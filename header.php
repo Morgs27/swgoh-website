@@ -94,14 +94,17 @@ else {
 			// }
 
 			$username = $_SESSION['Username'];
+
             echo "<a href='teams.php' onclick='loader()' ><div class='nav_container' id='navbar_teams'>Team Manager<span></span></div></a>";
 
 			echo "<a href='profile.php?$username' onclick='loader()' ><div class='nav_container' id='navbar_profile'>My Profile<span></span></div></a>";
 
 			echo "<a href='recruitment.php' onclick='loader()' ><div class='nav_container' id='navbar_recruitment'>Recruitment Hub<span></span></div></a>";
 
+			echo "<a href='farming_manager.php' onclick='loader()' ><div class='nav_container' id='navbar_farming'>Farming Plan<span></span></div></a>";
+			
 			if ($_SESSION["Username"] == "Morgs27"){
-			echo "<a class='custom-underline' href='admin.php'><div class='nav_container' id='navbar_admin'>Admin<span></span></div></a>";
+				echo "<a class='custom-underline' href='admin.php'><div class='nav_container' id='navbar_admin'>Admin<span></span></div></a>";
 			}
 
 			if($guild == "true" || isset($_SESSION['guest'])){

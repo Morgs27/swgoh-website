@@ -29,8 +29,7 @@ while( $data = $result->fetch_assoc()){
     $name = $data['plan_name'];
     $created = $data['created'];
 }
-
-
+ 
 ?>
 
 <script src = "script/farming_plan.js"></script>
@@ -669,7 +668,7 @@ if (isset($_GET['new'])){
     ?>
     <script>
         var id = '<?php echo $plan_id?>'
-
+        console.log('create new stage')
         new_stage(id);
     </script>
     <?php

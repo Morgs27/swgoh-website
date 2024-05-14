@@ -50,15 +50,20 @@ function loop_funtion($piece,$type){
     
     $gear = $_SESSION['gear'];
 
-    // Get Ingerdients of Piece
-    $ingredients = json_decode($gear[$piece]['ingredients']);
-
-
-    
-    if ($ingredients == ""){
-        // echo "Null";
+    // check if ingredients exists
+    if (!array_key_exists($piece,$gear)){
         return;
     }
+
+    // Get Ingerdients of Piece
+
+
+    if (!array_key_exists('ingredients',$gear[$piece]) || $gear[$piece]['ingredients'] == ""){
+        return;
+    }
+
+    $ingredients = json_decode($gear[$piece]['ingredients']);
+
     if (count($ingredients) == 0){
         // If Piece Has No Ingredients, Add 1 of that gear
 
@@ -142,10 +147,14 @@ foreach($array as $character){
                 
             }
         }
+        
+
         // Sort out current phase for complete
         foreach($current_equiped as $equiped_item){
-            $equipted_id = $equiped_item->equipmentId;
-            loop_funtion($equipted_id,"complete");
+
+         
+                $equipted_id = $equiped_item->base_id;
+                loop_funtion($equipted_id,"complete");
         }
         
     }

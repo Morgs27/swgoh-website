@@ -31,6 +31,7 @@
             $sql = "INSERT INTO farming_plan (plan_name,username,created) VALUES ('$plan_name','$username','$current_date')";
         }
         $result = $conn->query($sql);
+        print_r($conn->error);
 		header("location:farming_manager.php?new");
         }
 	}

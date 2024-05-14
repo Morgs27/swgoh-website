@@ -1,55 +1,49 @@
 <?php 
 include '../functions/db_connect.php';
 
+
 $subreddits = array("SWGOHRecruiting","swgoh_guilds");
 
-$channels_guild = array("AhnaldT101" => "282298162973245440","SWGOH Events" => "505385935551070208","Hot Utils" => "638479232917307403","AP Hub" => "818563567069954048","The Gambit" => "592457682687098890");
-$channels_personal = array("AhnaldT101" => "458664839905148939","SWGOH Events" => "924826760489607178","Hot Utils" => "834119568120348683","AP Hub" => "781983821452935218","The Gambit" => "754059305363439706");
+// $channels_guild = array("AhnaldT101" => "282298162973245440","SWGOH Events" => "505385935551070208","Hot Utils" => "638479232917307403","AP Hub" => "818563567069954048","The Gambit" => "592457682687098890");
+// $channels_personal = array("AhnaldT101" => "458664839905148939","SWGOH Events" => "924826760489607178","Hot Utils" => "834119568120348683","AP Hub" => "781983821452935218","The Gambit" => "754059305363439706");
+
+
+$channels_guild = array();
+$channels_personal = array("SWGOH Events" => "924826760489607178");
+
 
 date_default_timezone_set('UTC');
 
 function update_reddit_posts($conn,$subreddits){
     
+    
 
     $data = array();
 
     foreach ($subreddits as $subreddit){
-        
-        $instance = json_decode(file_get_contents("https://www.reddit.com/r/".$subreddit."/new.json"));
-        $instance = $instance->data;
-        $after = $instance->after;
-        $children = $instance->children;
-        $data = array_merge($data,$children);
 
-        $last_child = end($children);
-        $last_child_date = $last_child->data->created_utc;
-        $last_child_date = date("Y-m-d H:i:s",$last_child_date);
+        $url = "https://www.reddit.com/r/".$subreddit."/new.json";
 
-        $last_week = date("Y-m-d H:i:s",strtotime("-7 days"));
-       
-        if ($last_child_date > $last_week){
-            $done = false;
-            while ($done == false){
-                $instance = json_decode(file_get_contents("https://www.reddit.com/r/".$subreddit."/new.json?after=".$after));
-                $instance = $instance->data;
-                $after = $instance->after;
-                $children = $instance->children;
-                $data = array_merge($data,$children);
-        
-                $last_child = end($children);
-                $last_child_date = $last_child->data->created_utc;
-                $last_child_date = date("Y-m-d H:i:s",$last_child_date);
-        
-                $last_week = date("Y-m-d H:i:s",strtotime("-7 days"));
-                
-                if ($last_child_date < $last_week){
-                    $done = true;
-                }
-            }
-        }
+        // Set user agent
+        $userAgent = 'Swgoh'; // Replace this with your own user agent string
 
-        
+        // Create a stream context to include the user-agent header
+        $options = [
+            'http' => [
+                'header' => "User-Agent: $userAgent"
+            ]
+        ];
+        $context = stream_context_create($options);
 
+        // Fetch the JSON content
+        $json = file_get_contents($url, false, $context);
+
+        // Decode the JSON content
+        $instance = json_decode($json, true);
+
+        $instance = $instance['data']['children'];
+
+        $data = array_merge($data,$instance);
     }
 
     $sql = "DELETE FROM reddit_posts";
@@ -59,20 +53,32 @@ function update_reddit_posts($conn,$subreddits){
     
     $x = 0;
     foreach($data as $child){
-        $child = $child->data;
-        $subreddit = $child->subreddit;
-        $title = $child->title;
-        $text = $child->selftext_html;
-        $link = "https://reddit.com" . $child->permalink;
-        $author = $child->author;
-        $created = date("Y-m-d H:i:s",$child->created_utc);
-        $hint = $child->post_hint;
+        if (is_array($child)){
+            $child = $child['data'];
+        }
+        else{
+            continue;
+        }
+        $subreddit = $child['subreddit'];
+        $title = $child['title'];
+        $text = $child['selftext_html'];
+        $link = "https://reddit.com" . $child['permalink'];
+        $author = $child['author'];
+        $created = date("Y-m-d H:i:s",$child['created_utc']);
+        
+        if (array_key_exists('post_hint',$child)){
+            $hint = $child['post_hint'];
+        }
+        else{
+            $hint = "None";
+        }
+
         if ($hint == 'image'){
-            $image_url = $child->url;
+            $image_url = $child['url'];
             $link_url = "None";
         }
         else if ($hint == 'link'){
-            $link_url = $child->url;
+            $link_url = $child['url'];
         }
         else{
             $image_url = "None";
@@ -95,7 +101,10 @@ function update_reddit_posts($conn,$subreddits){
         $sql = $sql . $sql_str;
         $x += 1;
     }
+    // echo $sql;
+    $conn->set_charset('utf8mb4');
     $result = $conn->query($sql);
+    print_r($conn->error);
 }
 
 function update_discord_posts($conn,$channels_guild,$channels_personal){
@@ -167,7 +176,7 @@ function update_discord_posts($conn,$channels_guild,$channels_personal){
 
         echo $server;
        
-        $api_key = 'NDAzMjU3MjEwMTE4ODY0ODk2.YiofqQ.k9t50ymj3mQZu6g14AL-0xmDhAA';
+        $api_key = 'OTM1NjkxMTc3MDc4OTYwMTU5.GD-ASp.ASkkPAtOkN5biL-qnLDFoj-iaDSmSJWDCYirDQ';
         $url = "https://discord.com/api/v9/channels/". $channel ."/messages?limit=100";
 
         $curl = curl_init();
@@ -177,7 +186,7 @@ function update_discord_posts($conn,$channels_guild,$channels_personal){
         CURLOPT_CUSTOMREQUEST => 'GET',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_HTTPHEADER => array(
-            'Authorization:' . $api_key,
+            'Authorization: Bot ' . $api_key,
             'Content-Type: application/x-www-form-urlencoded'
         ),
         ));

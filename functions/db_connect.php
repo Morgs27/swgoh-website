@@ -1,6 +1,6 @@
 <?php
 // Four variables to connect to the database
-$servername = "mysql";
+$servername = "192.168.0.8:3306";
 $username = "root";
 $password = "swgohpassword";
 $dbname = "swgohger_website";

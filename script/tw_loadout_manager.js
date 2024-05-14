@@ -77,7 +77,7 @@ function create_loadout(){
 
     create_loadout.classList.add("active");
     input.focus();
-    
+     
 }
 
 function delete_loadout(id){
@@ -456,3 +456,4 @@ function import_plan(){
 
 }
 
+ 

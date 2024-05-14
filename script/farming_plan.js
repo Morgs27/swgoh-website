@@ -58,6 +58,7 @@ function new_stage(id){
     let new_button = document.querySelector(".new_stage");
     let stage_example = document.querySelector(".example_stage")
     let new_stage = stage_example.innerHTML;
+    console.log("new stage: ", temp_id)
     $.ajax({
         url: "includes/new_stage.inc.php",
         method: "POST",   
@@ -72,11 +73,10 @@ function new_stage(id){
                     console.log("Stage Id = " + stage_id);
                     new_stage = new_stage.replaceAll("example_id", stage_id);
                     new_stage = new_stage.replaceAll("req_id", () => '#' + Math.floor(Math.random()*16777215).toString(16));
-                    console.log(new_stage);
+
                     new_button.insertAdjacentHTML( 'beforebegin' , new_stage)
                    
-                    let input = document.getElementById(stage_id).querySelector(".stage_title");
-                    input.focus();
+                    let input = document.getElementById(stage_id)?.querySelector(".stage_title")?.focus();
                 },
                 error: function(errMsg) {
                     alert(JSON.stringify(errMsg));
@@ -767,6 +767,9 @@ function toggle_options(occurance_id){
 
 function toggle_delete(id){
     stage = document.getElementById(id);
+    if (stage == null){
+        return;
+    }
     stage.classList.toggle("delete");
 }
 
