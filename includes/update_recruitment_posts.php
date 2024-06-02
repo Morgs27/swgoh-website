@@ -117,7 +117,7 @@ function get_messages($channel_code){
 
     // $url = "https://discord.com/api/v9/channels/". $channel_code ."/messages?limit=100";
 
-    $url = "https://discord.com/api/v9/channels/924826760489607178/messages?limit=100";
+    $url = "https://discord.com/api/v9/channels/". $channel_code . "/messages?limit=100";
 
     $curl = curl_init();
 
