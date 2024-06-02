@@ -113,7 +113,7 @@ function get_messages($channel_code){
 
     echo "</br> Getting Messages </br>";
 
-    $api_key = 'OTM1NjkxMTc3MDc4OTYwMTU5.GoNZcJ.zUCClAVG9FpTypm3VrnpCIm48aeFJUD4Z7xdzU';
+    $api_key = 'NDAzMjU3MjEwMTE4ODY0ODk2.GmQf2l.E-6LlHz_Uf58kLIgr14Tpl7sHIzEpx7H0gFoDc';
 
     // $url = "https://discord.com/api/v9/channels/". $channel_code ."/messages?limit=100";
 
