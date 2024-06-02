@@ -8,8 +8,8 @@ $subreddits = array("SWGOHRecruiting","swgoh_guilds");
 // $channels_personal = array("AhnaldT101" => "458664839905148939","SWGOH Events" => "924826760489607178","Hot Utils" => "834119568120348683","AP Hub" => "781983821452935218","The Gambit" => "754059305363439706");
 
 
-$channels_guild = array();
-$channels_personal = array("SWGOH Events" => "924826760489607178");
+$channels_guild = array("AhnaldT101" => "282298162973245440", "SWGOH Events" => "1190698749442392266", "Hot Utils" => "638479232917307403" );
+$channels_personal = array("AhnaldT101" => "458664839905148939", "SWGOH Events" => "924826760489607178", "Hot Utils" => "834119568120348683");
 
 
 date_default_timezone_set('UTC');
@@ -107,6 +107,47 @@ function update_reddit_posts($conn,$subreddits){
     print_r($conn->error);
 }
 
+
+
+function get_messages($channel_code){
+
+    echo "</br> Getting Messages </br>";
+
+    $api_key = 'NDAzMjU3MjEwMTE4ODY0ODk2.GyalBM.LwZEd4U_fgg8R9_2n4ApsahnIB3bLcv7ZFgXJo';
+
+    // $url = "https://discord.com/api/v9/channels/". $channel_code ."/messages?limit=100";
+
+    $url = "https://discord.com/api/v9/channels/924826760489607178/messages?limit=100";
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => $url,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => '',
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 0,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => 'GET',
+      CURLOPT_HTTPHEADER => array(
+        'Authorization: ' . $api_key,
+        'Cookie: __cfruid=995ecdace9fff40823674f53aeea1bd619cc40ed-1715776082; __dcfduid=92855f5612b611ef8d5b72129c9eb4c5; __sdcfduid=92855f5612b611ef8d5b72129c9eb4c5eb7a0f0efa54e5e9ae9a998eb1303e3e3a5b1b480e6ead8bafbd68aa01df8ce7; _cfuvid=CokG8psygF7qwGuIYI4VlxNU34dx8jG3irH._FUOZt0-1715776082350-0.0.1.1-604800000'
+      ),
+    ));
+    
+    $response = curl_exec($curl);
+    
+    curl_close($curl);
+
+    print_r($response);
+
+    $data = json_decode($response);
+
+    return $data;
+
+}
+
 function update_discord_posts($conn,$channels_guild,$channels_personal){
 
     $sql = "DELETE FROM discord_posts";
@@ -115,31 +156,8 @@ function update_discord_posts($conn,$channels_guild,$channels_personal){
     foreach ($channels_guild as $channel){
 
         $server = array_search($channel,$channels_guild);
-
-        echo $server;
        
-        $api_key = 'NDAzMjU3MjEwMTE4ODY0ODk2.YiofqQ.k9t50ymj3mQZu6g14AL-0xmDhAA';
-        $url = "https://discord.com/api/v9/channels/". $channel ."/messages?limit=100";
-
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-        CURLOPT_URL => $url,
-        CURLOPT_CUSTOMREQUEST => 'GET',
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_HTTPHEADER => array(
-            'Authorization:' . $api_key,
-            'Content-Type: application/x-www-form-urlencoded'
-        ),
-        ));
-
-        $data = curl_exec($curl);
-
-        curl_close($curl);
-
-        $data = json_decode($data);
-
-        print_r($data);
+        $data = get_messages($channel);
 
 
         foreach ($data as $message){
@@ -174,31 +192,7 @@ function update_discord_posts($conn,$channels_guild,$channels_personal){
 
         $server = array_search($channel,$channels_personal);
 
-        echo $server;
-       
-        $api_key = 'OTM1NjkxMTc3MDc4OTYwMTU5.GD-ASp.ASkkPAtOkN5biL-qnLDFoj-iaDSmSJWDCYirDQ';
-        $url = "https://discord.com/api/v9/channels/". $channel ."/messages?limit=100";
-
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-        CURLOPT_URL => $url,
-        CURLOPT_CUSTOMREQUEST => 'GET',
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_HTTPHEADER => array(
-            'Authorization: Bot ' . $api_key,
-            'Content-Type: application/x-www-form-urlencoded'
-        ),
-        ));
-
-        $data = curl_exec($curl);
-
-        curl_close($curl);
-
-        $data = json_decode($data);
-
-        print_r($data);
-
+        $data = get_messages($channel);
 
         foreach ($data as $message){
             $content = $message->content;

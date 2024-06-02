@@ -20,8 +20,8 @@ if ($_SESSION["Username"] == "Morgs27"){
     </style>
 
     <div class = "admin_buttons">
-    <a href = 'paypal_admin.php'>Paypal Admin</a>
-    <a href = 'google.php'>Google Admin</a>
+    <!-- <a href = 'paypal_admin.php'>Paypal Admin</a>
+    <a href = 'google.php'>Google Admin</a> -->
     <a href = 'admin.php?refresh'>Refresh All Player Data</a>
     <a href = 'admin.php?refresh_guests'>Refresh Guests</a>
     <a href = 'admin.php?insert_guests'>Insert Guests</a>
@@ -34,10 +34,10 @@ if ($_SESSION["Username"] == "Morgs27"){
     <a href = 'admin.php?log'>Show Change Log</a>
     <a href = 'admin.php?clear_log'>Clear Log</a>
     <a href = 'admin.php?get_gl_requirements'>Insert GL requirements</a>
-    <a href = 'memsec.php'>Memsec</a>
+    <!-- <a href = 'memsec.php'>Memsec</a> -->
 
     </div>
-    <form action="admin.php" method = "get">
+    <!-- <form action="admin.php" method = "get">
         
     <input type="text" placeholder="Refresh Player Info" name="Username_refresh" >
     <button class='admin_button'  type="submit"  name="submit" >></button>
@@ -61,7 +61,7 @@ if ($_SESSION["Username"] == "Morgs27"){
     <input type="text" placeholder="Refresh Facebook Token" name="token" >
     <button class='admin_button'  type="submit"  name="submit" >></button>
     </input>
-    </form>
+    </form> -->
     
     <?php
     echo "<div class = 'admin_results'>";

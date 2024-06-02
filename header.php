@@ -95,6 +95,8 @@ else {
 
 			$username = $_SESSION['Username'];
 
+			// echo "<a href='info.php' onclick='loader()' ><div class='nav_container' id='navbar_info'>Info<span></span></div></a>";
+
             echo "<a href='teams.php' onclick='loader()' ><div class='nav_container' id='navbar_teams'>Team Manager<span></span></div></a>";
 
 			echo "<a href='profile.php?$username' onclick='loader()' ><div class='nav_container' id='navbar_profile'>My Profile<span></span></div></a>";

@@ -123,13 +123,14 @@ function getPlayerInfo_new($username,$conn){
 
 	$sql = "SELECT * FROM user_character_data WHERE Username = '$username'";
 	$result = $conn->query($sql);
-
+	echo $conn->error;
 	$characters = array();
 	while ($data = $result->fetch_assoc()) {
+		// print_r($data);
 		$character = new character_new;
 
-		$character->set_values_character($data['id'],$data['defId'],$data['nameKey'],$data['rarity'],$data['level'],$data['gear'],$data['gp'],$data['relic'],$data['zetas'],$data['omicrons'],
-		$data['stats_base'],$data['stats_mods'],$data['mods'],$data['speed'],$data['health'],$data['protection'],$data['tenacity'],$data['potency'],$data['special_damage'],$data['physical_damage'],$data['ultimate']);
+		$character->set_values_character($data['user_character_id'],$data['defId'],$data['nameKey'],$data['rarity'],$data['level'],$data['gear'],$data['gp'],$data['relic'],$data['zetas'],$data['omicrons'],
+		$data['stats_base'],"","",$data['speed'],$data['health'],$data['protection'],$data['tenacity'],$data['potency'],$data['special_damage'],$data['physical_damage'],$data['ultimate']);
 		
 		array_push($characters,$character);
 		
@@ -144,7 +145,7 @@ function getPlayerInfo_ship($username,$conn){
 	$ships = array();
 	while ($data = $result->fetch_assoc()) {
 		$ship = new ship_new;
-		$ship->set_values_ship($data['id'],$data['defId'],$data['rarity'],$data['level'],$data['gp'],$data['crew']);
+		$ship->set_values_ship($data['user_ship_id'],$data['defId'],$data['rarity'],$data['level'],$data['gp'],$data['crew']);
 		
 		array_push($ships,$ship);
 		

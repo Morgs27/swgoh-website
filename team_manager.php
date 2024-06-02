@@ -256,7 +256,7 @@ else {
 	$combat = "characters";
 }
 
-if (isset($_GET['saved'])){
+if (isset($_GET['saved_message'])){
 	?>
 	<script>
 
@@ -264,6 +264,11 @@ if (isset($_GET['saved'])){
 
 	</script>
 	<?php
+}
+
+if (isset($_GET['saved'])){
+	// redirect header with saved_message instead of saved
+    header("location: team_manager.php?$combat&$link&saved_message");
 }
 
 

@@ -2845,6 +2845,7 @@ body {
 	text-align: center;
 	font-size: 50px;
 	margin-bottom: 10px;
+	user-select: text !important;
 }
 
 .confirmation_text {
@@ -2985,6 +2986,7 @@ body {
 	overflow: scroll;
 	transition: 1.5s;
 	transform: translateX(-33.33%);
+	user-select: text !important;
 }
 
 .guild_container_container{

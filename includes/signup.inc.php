@@ -5,7 +5,7 @@ include '../classes/user_new.php';
 
 ob_start();
 include_once '../header.php';
-include 'classes/paypal_class_init.php';
+// include 'classes/paypal_class_init.php';
 
 
 //Check that user got to this page using the form
@@ -29,6 +29,13 @@ if (isset($_POST["submit"])) {
 	// Check for ally code
 // 	$url = 'https://api.swgoh.help/swgoh/player/'.$ally_code.'/';
     $check_data = json_decode(@file_get_contents($url));
+	
+	if ($check_data == NULL){
+		header("location: ../signup.php?error=ally_code");
+		exit();
+	}
+	
+	
 	if(property_exists($check_data, 'data')){
 		echo "success";
 	}

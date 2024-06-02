@@ -54,7 +54,7 @@ if (isset($_GET['newpwd'])){
 }
 ?>
 <div class="seperator"></div>
-<a style = 'color: rgba(255,255,255,0.7);' href = "reset_password.php">Forgot your password?</a>
+<!-- <a style = 'color: rgba(255,255,255,0.7);' href = "reset_password.php">Forgot your password?</a> -->
 
 
 

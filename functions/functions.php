@@ -220,7 +220,7 @@ function check_in_guild($conn,$username){
    $sql = "SELECT guild_id FROM users WHERE Username = '$username'";
    $result = $conn->query($sql);
    while ($data = $result->fetch_assoc()) {
-       if (($data['guild_id'] == "NULL" )or($data['guild_id'] == "0" ) )
+       if (($data['guild_id'] == NULL )or($data['guild_id'] == "0" ) )
            $guild = "false";
        
        else {

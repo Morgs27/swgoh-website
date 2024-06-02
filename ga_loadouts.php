@@ -44,15 +44,17 @@
         $teams = $ranks[$rank];
         if (isset($_SESSION['guest'])){
             $guest_id = $_SESSION['guest'];
-            $sql = "INSERT INTO ga_loadouts (name,guest_id,username,created,rank,teams) VALUES ('$plan_name','$guest_id','$username','$current_date','$rank','$teams')";
+            // $sql = "INSERT INTO `ga_loadouts` (`name`,guest_id,username,created,rank,teams) VALUES ('$plan_name','$guest_id','$username','$current_date','$rank','$teams')";
+            $sql = "INSERT INTO `ga_loadouts` (`loadout_id`, `guest_id`, `name`, `created`, `username`, `rank`, `teams`) VALUES (NULL, '$guest_id', '$plan_name', '$current_date', '$username', '$rank', '$teams')";
 
         }
         else {
-            $sql = "INSERT INTO ga_loadouts (name,username,created,rank,teams) VALUES ('$plan_name','$username','$current_date','$rank','$teams')";
+            $sql = "INSERT INTO `ga_loadouts` (`loadout_id`, `guest_id`, `name`, `created`, `username`, `rank`, `teams`) VALUES (NULL, NULL, '$plan_name', '$current_date', '$username', '$rank', '$teams')";
 
         }
+
         $result = $conn->query($sql);
-        
+
 		header("location:ga_loadouts.php?new");
         }
 	}

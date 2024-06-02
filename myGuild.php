@@ -150,11 +150,11 @@ if (isset($_SESSION['guest'])){
 <div class="seperator"></div>
 
 <div class="guild_options">
-    <div class="guild_option" onclick = 'window.location.href="myGuild_progress.php"'>
-        <!-- <img src="images/farm.png" alt=""> -->
+    <!-- <div class="guild_option" onclick = 'window.location.href="myGuild_progress.php"'>
+        <img src="images/farm.png" alt="">
         <div class="guild_option_background"></div>
         <div class="option_text">Progress</div>
-    </div>
+    </div> -->
     <?php 
         $active_loadout = get_active_loadout_id($conn,$guild_id);
 
@@ -177,11 +177,11 @@ if (isset($_SESSION['guest'])){
             <?php
         }
         ?>
-    <div class="guild_option" onclick = 'window.location.href="myGuild_info.php"'>
-        <!-- <img src="images/tactical_droid.webp" style = 'transform:translateY(5px);'  alt=""> -->
+    <!-- <div class="guild_option" onclick = 'window.location.href="myGuild_info.php"'>
+        <img src="images/tactical_droid.webp" style = 'transform:translateY(5px);'  alt="">
         <div class="guild_option_background"></div>
         <div class="option_text">Info</div>
-    </div>
+    </div> -->
 </div>
 
 <div class="seperator"></div>

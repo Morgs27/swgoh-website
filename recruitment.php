@@ -53,11 +53,11 @@ console.log(window.pro);
 <img src="images/tw_map_2.jpg" alt="" >
 <div class="title">SWGOH Recruitment Hub</div>
 
-<!-- <div onclick = 'open_new_post()' class="tw_settings export" >
+<div onclick = 'open_new_post()' class="tw_settings export" >
     <div>
         <div class = 'export_open_text'>New Post</div> <i style = 'transform:translate(0px);' class="fa-solid fa-plus"></i>
     </div>
-</div> -->
+</div>
 
 </div>
 
@@ -105,13 +105,13 @@ console.log(window.pro);
                        <div id="display-image"></div>
                     </div>
                 </div> 
-                <div class="form_row">
+                <!-- <div class="form_row">
                    <div class="row_content pro ">
                        <div onclick = 'check_pro()' class="promote_box">Promote <input style = '' id = 'pro_checkbox' name = 'promoted' type = 'checkbox'></input> <label class = 'pro_checkbox' for="pro_checkbox"></label></div>
                        <div class="premium_required">* Pro Version Required!</div>
                        <div class="promote_after_text">Boost your advert to the top!</div>
                     </div>
-                </div>
+                </div> -->
         </div>
         <div class="modal_title bottom"><div type = "submit" onclick = 'post_form()' class="save_button">Post<i class="fa-solid fa-paper-plane"></i></div></div>
         </form>
@@ -141,12 +141,12 @@ console.log(window.pro);
             <div id = 'Hot Utils' onclick = 'toggle_sub(this.id)' class="filter_sub">
             <img src = 'https://cdn.discordapp.com/icons/470702742298689544/a_5b9367290b03fff32d2a2fc1ef9eff26.webp?size=240'>
             </div>
-            <div id = 'AP Hub' onclick = 'toggle_sub(this.id)' class="filter_sub">
+            <!-- <div id = 'AP Hub' onclick = 'toggle_sub(this.id)' class="filter_sub">
             <img src = 'https://cdn.discordapp.com/icons/709563683277242474/8dec2020ea948053afebd7c6a47419da.webp?size=240'>
             </div>
             <div id = 'The Gambit' onclick = 'toggle_sub(this.id)' class="filter_sub">
             <img src = 'https://cdn.discordapp.com/icons/340565575707262997/1cf2f0e96b95ec7787957f16b86624c0.webp?size=240'>
-            </div>
+            </div> -->
             </div>
         </div>
     </div>

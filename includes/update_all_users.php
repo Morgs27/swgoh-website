@@ -1,6 +1,7 @@
 <?php
+ignore_user_abort(true);
 set_time_limit(0);
-ignore_user_abort();
+
 
 include '../functions/db_connect.php';
 

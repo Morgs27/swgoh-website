@@ -1,7 +1,8 @@
 <?php
 ob_start();
 include 'header.php';
-
+ini_set('SMTP', 'mail.example.com'); // Use your mail server's address
+ini_set('smtp_port', '587'); // Use your mail server's port
 
 if (isset($_POST['reset_request_submit'])){
 
@@ -57,7 +58,7 @@ if (isset($_POST['reset_request_submit'])){
     // echo $subject;
     // echo $message;
     // echo $headers;
-    header("location: reset_password.php?reset=success");
+    // header("location: reset_password.php?reset=success");
 
 
 

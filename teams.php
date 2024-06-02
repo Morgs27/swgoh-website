@@ -130,7 +130,7 @@ else{
 </div>
 
 
-
+<!-- 
 <div id = "theory" class="options">
     <div class="options_watermark tc"><i class="fa-solid fa-pen-ruler"></i></div>
 
@@ -169,7 +169,7 @@ else{
         </div>
     </div>
 
-</div>
+</div> -->
 
  
 <div id = "ga" class="options">
