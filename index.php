@@ -20,7 +20,7 @@ if (isset($_SESSION['Username'])){
     <div class = 'homeLinks'>
         <a href="signup.php" class="homeLink">Sign Up</a>
         <a href="login.php" class="homeLink">Log In</a>
-        <a href= "https://discord.gg/JZdbfMhm94" class="homeLink">Discord</a>
+        <a href= "https://discord.gg/AAZJ88f5at" class="homeLink">Discord</a>
     </div>  
 </div>
 
