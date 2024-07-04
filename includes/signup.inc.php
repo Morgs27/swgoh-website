@@ -24,7 +24,7 @@ if (isset($_POST["submit"])) {
 		exit();
 	}
 	
-	$url = "http://api.swgoh.gg/player/" . $ally_code . "/";
+	$url = "http://swgoh.gg/api/player/" . $ally_code . "/";
 
 	// Check for ally code
 // 	$url = 'https://api.swgoh.help/swgoh/player/'.$ally_code.'/';

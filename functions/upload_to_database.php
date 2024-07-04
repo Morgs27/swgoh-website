@@ -2,7 +2,7 @@
 function insert_character_data($conn) {
 	$sql_d = "DELETE FROM character_data";
 	$result_d = $conn->query($sql_d);
-	$url = 'http://api.swgoh.gg/characters/';
+	$url = 'http://swgoh.gg/api/characters/';
 
 
 	$data = file_get_contents($url);
@@ -36,7 +36,7 @@ function insert_character_data($conn) {
 function insert_ship_data($conn) {
 	$sql_d = "DELETE FROM ship_data";
 	$result_d = $conn->query($sql_d);
-	$url = 'http://api.swgoh.gg/ships/';
+	$url = 'http:/swgoh.gg/api/ships/';
 	$data = file_get_contents($url);
 	$data = json_decode($data);
 
@@ -59,7 +59,7 @@ function insert_ship_data($conn) {
 function insert_gear_data($conn){
 	$sql_d = "DELETE FROM gear";
 	$result_d = $conn->query($sql_d);
-	$url = "http://api.swgoh.gg/gear";
+	$url = "http:/swgoh.gg/api/gear";
 	$data = json_decode(file_get_contents($url));
 	foreach($data as $piece){
 		$base_id = $piece->base_id;
@@ -78,7 +78,7 @@ function insert_gear_data($conn){
 }
 
 function insert_gl_requirements($conn){
-	$galactic_legend_data = json_decode(file_get_contents("http://api.swgoh.gg/gl-checklist/"));
+	$galactic_legend_data = json_decode(file_get_contents("http://swgoh.gg/api/gl-checklist/"));
 	// print_r ($galactic_legend_data->units);
 	foreach($galactic_legend_data->units as $legend){
 		$required = json_encode($legend->requiredUnits);

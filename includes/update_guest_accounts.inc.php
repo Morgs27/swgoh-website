@@ -184,7 +184,7 @@ function upload_data($username,$ally_code,$data,$conn){
 
     date_default_timezone_set('UTC');
 
-    $content = @file_get_contents("http://api.swgoh.gg/player/" . $ally_code . "/");
+    $content = @file_get_contents("http://swgoh.gg/api/player/" . $ally_code . "/");
     if (strpos($http_response_header[0], "200")) { 
        $gg_data = json_decode($content);
     } else { 
@@ -198,13 +198,13 @@ function upload_data($username,$ally_code,$data,$conn){
 
     
     // try{
-    //     $gg_data = json_decode(file_get_contents("http://api.swgoh.gg/player/" . $ally_code . "/"));
+    //     $gg_data = json_decode(file_get_contents("http://swgoh.gg/api/player/" . $ally_code . "/"));
     // }
     // catch (Exception $ex){
     //     echo "GG Data False";
     //     return;
     // }
-    // $gg_data = json_decode(file_get_contents("http://api.swgoh.gg/player/" . $ally_code . "/"));
+    // $gg_data = json_decode(file_get_contents("http://swgoh.gg/api/player/" . $ally_code . "/"));
     // echo "GG Data:";
     // print_r($gg_data);
     // if ($gg_data === false || $gg_data === NULL){
@@ -231,7 +231,7 @@ function upload_data($username,$ally_code,$data,$conn){
     if ($current_date > $end_time){
     
         $curl = curl_init();
-        $url = 'http://api.swgoh.gg/players/' . $ally_code .'/trigger-sync/';
+        $url = 'http://swgoh.gg/api/players/' . $ally_code .'/trigger-sync/';
         echo $url;
         curl_setopt_array($curl, array(
         CURLOPT_URL => $url,
@@ -249,7 +249,7 @@ function upload_data($username,$ally_code,$data,$conn){
         curl_close($curl);
         echo $response;
     
-        $gg_data = json_decode(file_get_contents("http://api.swgoh.gg/player/" . $ally_code . "/"));
+        $gg_data = json_decode(file_get_contents("http://swgoh.gg/api/player/" . $ally_code . "/"));
         $user_data = $gg_data->data;
     }
     

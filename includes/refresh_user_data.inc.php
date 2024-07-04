@@ -20,7 +20,7 @@ $result = $conn->query($sql);
 date_default_timezone_set('UTC');
 
 // Fetch User Data from swgoh.gg
-$data = json_decode(file_get_contents("http://api.swgoh.gg/player/" . $ally_code . "/"));
+$data = json_decode(file_get_contents("http://swgoh.gg/api/player/" . $ally_code . "/"));
 
 // Create Time Variables
 $last_updated = $data->data->last_updated;
@@ -35,7 +35,7 @@ if ($current_date > $end_time){
 
     // Setup Curl POST Request
     $curl = curl_init();
-    $url = 'http://api.swgoh.gg/players/' . $ally_code .'/trigger-sync/';
+    $url = 'http://swgoh.gg/api/players/' . $ally_code .'/trigger-sync/';
     echo $url;
     curl_setopt_array($curl, array(
         CURLOPT_URL => $url,
@@ -53,7 +53,7 @@ if ($current_date > $end_time){
     curl_close($curl);
 
     // Fetch New Update Info from swgoh.gg
-    $data = json_decode(file_get_contents("http://api.swgoh.gg/player/" . $ally_code . "/"));
+    $data = json_decode(file_get_contents("http://swgoh.gg/api/player/" . $ally_code . "/"));
 
 }
 
@@ -70,7 +70,7 @@ if ($data == null){
 }
 
 // Get Base Ability Data from SWGOH.gg
-$ability_data = json_decode(file_get_contents("http://api.swgoh.gg/abilities"));
+$ability_data = json_decode(file_get_contents("http://swgoh.gg/api/abilities"));
 
 // Delete Existing Character + Ship data from database
 $sql_c_d = "DELETE FROM user_character_data WHERE Username = '$username'";
