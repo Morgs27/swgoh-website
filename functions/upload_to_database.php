@@ -99,13 +99,13 @@ function insert_gl_requirements($conn){
 function insert_guests($conn){
 	$users = array(
 		array("username" => "Guest_Info__","ally_code" => "741324657"),
-		array("username" => "Guest_Info___","ally_code" => "939729166"),
+		array("username" => "Guest_Info___","ally_code" => "411536365"),
 		array("username" => "Guest_Info____","ally_code" => "882145491"),
 		array("username" => "Guest_Info_____","ally_code" => "616485783"),
 		array("username" => "Guest_Info______","ally_code" => "644744399"),
 		array("username" => "Guest_Info_______","ally_code" => "479461123"),
-		array("username" => "Guest_Info________","ally_code" => "771957566"),
-		array("username" => "Guest_Info_________","ally_code" => "528234451")
+		array("username" => "Guest_Info________","ally_code" => "743378545"),
+		array("username" => "Guest_Info_________","ally_code" => "645726276")
 	);
 
 	foreach ($users as $user){

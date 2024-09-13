@@ -11,47 +11,29 @@ ignore_user_abort();
 
 $users = array(array());
 
-// $sql = "SELECT * FROM users";
-// $result = $conn->query($sql);
-// $counter = 0;
-// $index = 0;
-// while($data = $result->fetch_assoc()){
-    
-//     $counter += 1;
-//     if ($counter == 51){
-//         $index += 1;
-//         $counter = 1;
-//         $users[$index] = array();
-//     }
-    
-//     $user = array("username" => $data['Username'],"ally_code" => $data['ally_code']);
-//     array_push($users[$index],$user);
-
-// }
-
 
 $users = array(array(
     array("username" => "Guest_Info__","ally_code" => "741324657"),
-    array("username" => "Guest_Info___","ally_code" => "939729166"),
+    array("username" => "Guest_Info___","ally_code" => "411536365"),
     array("username" => "Guest_Info____","ally_code" => "882145491"),
     array("username" => "Guest_Info_____","ally_code" => "616485783"),
     array("username" => "Guest_Info______","ally_code" => "644744399"),
     array("username" => "Guest_Info_______","ally_code" => "479461123"),
-    array("username" => "Guest_Info________","ally_code" => "771957566"),
-    array("username" => "Guest_Info_________","ally_code" => "528234451")
+    array("username" => "Guest_Info________","ally_code" => "743378545"),
+    array("username" => "Guest_Info_________","ally_code" => "645726276")
 ));
 
 
 
 foreach($users as $group){
-    // print_r($group);
+
     $allycodes = array();
     foreach ($group as $user){
         array_push($allycodes,$user['ally_code']);
     }
 
     $data = json_decode(get_player_data_codes(json_encode($allycodes)));
-    // print_r($data);
+
 
     $str = json_encode($allycodes) . ": Got Data";
     $sql = "INSERT INTO change_log (change_info) VALUES ('$str')";
@@ -76,7 +58,7 @@ foreach($users as $group){
             foreach($positions as $position){
                 $username = $group[$position]['username'];
                 $roster = calculate_data(json_encode($data[$x]->roster));
-                // print_r($roster);
+
                 upload_data($username,$ally_code,$roster,$conn);
             }
         }

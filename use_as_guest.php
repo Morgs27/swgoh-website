@@ -24,13 +24,13 @@ if (isset($_GET['code'])){
 
     $users = array(
         array("username" => "Guest_Info__","ally_code" => "741324657"),
-        array("username" => "Guest_Info___","ally_code" => "939729166"),
+        array("username" => "Guest_Info___","ally_code" => "411536365"),
         array("username" => "Guest_Info____","ally_code" => "882145491"),
         array("username" => "Guest_Info_____","ally_code" => "616485783"),
         array("username" => "Guest_Info______","ally_code" => "644744399"),
         array("username" => "Guest_Info_______","ally_code" => "479461123"),
-        array("username" => "Guest_Info________","ally_code" => "771957566"),
-        array("username" => "Guest_Info_________","ally_code" => "528234451")
+        array("username" => "Guest_Info________","ally_code" => "743378545"),
+        array("username" => "Guest_Info_________","ally_code" => "645726276")
     );
 
     $code = $_GET['code'];
@@ -85,7 +85,7 @@ else {
         <div class="guest_name">Ahnald T101</div>
     </div>
 
-    <div id = '939729166' class="guest_profile" onclick = 'set_guest(this.id)'>
+    <div id = '411536365' class="guest_profile" onclick = 'set_guest(this.id)'>
         <div class="guest_img">
             <img src="images/bit_dynasty.jpg" style = 'transform: translateX(-20px)' alt="">
         </div>
@@ -120,14 +120,14 @@ else {
         <div class="guest_name">Xaereth Prevails</div>
     </div>
 
-    <div id = '479461123' class="guest_profile" onclick = 'set_guest(this.id)'>
+    <div id = '743378545' class="guest_profile" onclick = 'set_guest(this.id)'>
         <div class="guest_img">
             <img src="images/ian.png" style = 'transform: translateX(-20px)' alt="">
         </div>
         <div class="guest_name">Its Just Ian</div>
     </div>
 
-    <div id = '771957566' class="guest_profile" onclick = 'set_guest(this.id)'>
+    <div id = '645726276' class="guest_profile" onclick = 'set_guest(this.id)'>
         <div class="guest_img">
             <img src="images/gridan.jpg" style = 'transform: translateX(-30px)' alt="">
         </div>

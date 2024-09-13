@@ -288,8 +288,6 @@ $userStr = implode("', '", $usernames);
                 let outer_id = "outer_team_id_" + team_id;
 
                 div = document.getElementById(div_id);
-
-                // div.style.background = "Red";
                 div.id = new_id
 
                 let previous_div = document.getElementById(outer_id);
@@ -306,7 +304,6 @@ $userStr = implode("', '", $usernames);
                 div.onclick = function(){
                     
                     remove("s_" + new_id);
-                    // console.log("remove init_>" + div_id + "   " + new_id)
                 }
                 console.log(div.onclick)
             })
@@ -339,9 +336,7 @@ $userStr = implode("', '", $usernames);
 
                     div = document.getElementById(div_id);
 
-                    // div.style.background = "green";
                     div.id = new_id
-                    // div.clas
 
                     var parent = div.parentNode;
                     var wrapper = document.createElement('div');
@@ -795,8 +790,6 @@ Loading Teams...
 <script>
     startup();
     change_territory(window.active_territory);
-    // hide_excluded();
-    // change_territory(window.active_territory);
   
 </script>
 

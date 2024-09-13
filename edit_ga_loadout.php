@@ -283,7 +283,6 @@ foreach($territories as $territory){
                         $t2 = $teams->T2->in;
                         if ($t2[0] == null || $t2[0] == "none"){
                             echo "<div class='territory_content none ships_$number'>";
-                            // echo "<div class='add_msg'>Click to add teams<i class='fa-solid fa-plus'></i></div>";
                             echo "</div>";
                         }
                         else {
@@ -318,7 +317,6 @@ foreach($territories as $territory){
                         $t1 = $teams->T1->in;
                         if ($t1[0] == null || $t1[0] == "none"){
                             echo "<div class='territory_content none t1_chars'>";
-                            // echo "<div class='add_msg'>Click to add teams<i class='fa-solid fa-plus'></i></div>";
                             echo "</div>";
                         }
                         else {
@@ -347,7 +345,6 @@ foreach($territories as $territory){
                         $B2 = $teams->B2->in;
                         if ($B2[0] == null || $B2[0] == "none"){
                             echo "<div class='territory_content  B2_chars none' >";
-                            // echo "<div class='add_msg'>Click to add teams<i class='fa-solid fa-plus'></i></div>";
                             echo "</div>";
                         }
                         else {
@@ -382,7 +379,6 @@ foreach($territories as $territory){
                         if ($B1[0] == null || $B1[0] == "none"){
 
                             echo "<div class='territory_content none t1_chars'>";
-                            // echo "<div class='add_msg'>Click to add teams<i class='fa-solid fa-plus'></i></div>";
                             echo "</div>";
                         }
                         else {
@@ -507,7 +503,6 @@ foreach($territories as $territory){
                         echo "<div class='team_info_container' >";
                         echo "<div class = 'team_info'>{$data['team_gp']}</div>";
                         echo "<div onclick = 'remove_from_territory(this.id)' id = '{$data['team_id']}'  class = 'delete_team_link' ><i class='fa-solid fa-xmark'></i></div>";
-                        // echo "<div id = '{$data['team_id']}'  class = 'edit_team_link' ><i class='fa-solid fa-pen-to-square'></i></div>";
                         echo "</div>";
                         
                         

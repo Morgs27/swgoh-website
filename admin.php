@@ -79,8 +79,6 @@ if ($_SESSION["Username"] == "Morgs27"){
             }, 6000);
         </script>
         <?php
-        // sleep(5);
-        // header("loaction: admin.php?log");
 
     }
     if (isset($_GET['clear_log'])){
@@ -138,7 +136,6 @@ if ($_SESSION["Username"] == "Morgs27"){
             });
         </script>
         <?php
-        //  header("location:admin.php");
     }
     if (isset($_GET['insert_guests'])){
        insert_guests($conn);
@@ -159,35 +156,29 @@ if ($_SESSION["Username"] == "Morgs27"){
             });
         </script>
         <?php
-        //  header("location:admin.php");
     }
     if (isset($_GET['recruitment'])){
         include_once 'includes/update_recruitment_posts.php';
     }
     if (isset($_GET['gear'])){
         insert_gear_data($conn);
-        //  header("location:admin.php");
     }
     if (isset($_GET['characters'])){
         insert_character_data($conn);
-        //  header("location:admin.php");
+
     }
     if (isset($_GET['ships'])){
         insert_ship_data($conn) ;
-        //  header("location:admin.php");
     }
     if (isset($_GET['team'])){
         update_team_gp_all($conn);
-        // header("location:admin.php");
     }
     if (isset($_GET['ship_team'])){
         update_team_gp_all_ship(); 
-        // header("location:admin.php");
 
     }
     if (isset($_GET['get_gl_requirements'])){
         insert_gl_requirements($conn);
-        // header("location:admin.php");
 
     }
      if (isset($_GET['Username_refresh'])){
@@ -195,10 +186,7 @@ if ($_SESSION["Username"] == "Morgs27"){
         $username = $_GET['Username_refresh'];
         echo $username;
         $ally_code = get_ally_code($conn,$username);
-        // echo "   ";
-        // echo $ally_code;
-        // refresh_player_data($ally_code,$username,$conn);
-        //  header("location:admin.php");
+
         ?>
         <script>
         let username = '<?php echo $username; ?>';
@@ -222,14 +210,12 @@ if ($_SESSION["Username"] == "Morgs27"){
         $user_info = (getPlayerInfo_new($username,$conn));
         print_r($user_info);
         update_team_gp($conn,$user_info,$username);
-        //  header("location:admin.php");
     }
      if (isset($_GET['Username_refresh_team_ship'])){
         $username = $_GET['Username_refresh_team_ship'];
         $user_info = (getPlayerInfo_new($username,$conn));
 		$ship_info = (getPlayerInfo_ship($username,$conn));
 		update_team_gp_ship($conn,$user_info,$ship_info,$username);
-        //  header("location:admin.php");
     }
   
     echo "</div>";
