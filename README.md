@@ -1,4 +1,6 @@
-# Star Wars Galaxy of Heroes Managment Website
+# SWGOH Team Manager
+
+###### Live at [swgohteammanager.com](https://swgohteammanager.com)
 
 This website uses in-game data to help you manage your account and orchestrate your guild with ease. 
 
@@ -22,3 +24,10 @@ This website uses in-game data to help you manage your account and orchestrate y
 
 ## Post them to your guild
 ![image](https://github.com/Morgs27/swgoh-website/assets/107374410/648a08a4-c495-45ff-aa4e-913df1a9dc55)
+
+## Technologies Used
+
+- Frontend: HTML, CSS, JavaScript
+- Backend: PHP
+- Database: MySQL
+- APIs: [swgoh.gg](https://swgoh.gg)
