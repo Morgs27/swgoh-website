@@ -1,9 +1,13 @@
 <?php
-// Four variables to connect to the database
-$servername = "192.168.0.8:3306";
-$username = "root";
-$password = "swgohpassword";
-$dbname = "swgohger_website";
+// Load environment variables
+require_once __DIR__ . '/../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv->load();
+
+$servername = $_ENV['DB_SERVER'];
+$username = $_ENV['DB_USERNAME'];
+$password = $_ENV['DB_PASSWORD'];
+$dbname = $_ENV['DB_NAME'];
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
