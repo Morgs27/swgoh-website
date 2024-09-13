@@ -36,7 +36,7 @@ function insert_character_data($conn) {
 function insert_ship_data($conn) {
 	$sql_d = "DELETE FROM ship_data";
 	$result_d = $conn->query($sql_d);
-	$url = 'http:/swgoh.gg/api/ships/';
+	$url = 'http://swgoh.gg/api/ships/';
 	$data = file_get_contents($url);
 	$data = json_decode($data);
 
@@ -59,7 +59,7 @@ function insert_ship_data($conn) {
 function insert_gear_data($conn){
 	$sql_d = "DELETE FROM gear";
 	$result_d = $conn->query($sql_d);
-	$url = "http:/swgoh.gg/api/gear";
+	$url = "http://swgoh.gg/api/gear";
 	$data = json_decode(file_get_contents($url));
 	foreach($data as $piece){
 		$base_id = $piece->base_id;
