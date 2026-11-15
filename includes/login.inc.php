@@ -19,14 +19,34 @@ if (isset($_POST["submit"])) {
 		exit();
 	}
 
-	$username = mysqli_real_escape_string($conn, $enteredUsername);
+	// Look the user up with a prepared statement, then check the password hash.
+	$stmt = mysqli_prepare($conn, "SELECT Username, Password AS pwd FROM users WHERE Username = ?");
+	mysqli_stmt_bind_param($stmt, "s", $enteredUsername);
+	mysqli_stmt_execute($stmt);
+	$row = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 
-	$password = mysqli_real_escape_string($conn, $enteredPassword);
+	$loginOk = false;
+	if ($row) {
+		if (password_verify($enteredPassword, $row['pwd'])) {
+			$loginOk = true;
+			if (password_needs_rehash($row['pwd'], PASSWORD_DEFAULT)) {
+				$upgradeHash = true;
+			}
+		} elseif (hash_equals((string)$row['pwd'], (string)$enteredPassword)) {
+			// Legacy account with a plain-text password: accept once, then store a hash.
+			$loginOk = true;
+			$upgradeHash = true;
+		}
+		if ($loginOk && !empty($upgradeHash)) {
+			$newHash = password_hash($enteredPassword, PASSWORD_DEFAULT);
+			$up = mysqli_prepare($conn, "UPDATE users SET Password = ? WHERE Username = ?");
+			mysqli_stmt_bind_param($up, "ss", $newHash, $row['Username']);
+			mysqli_stmt_execute($up);
+		}
+		$enteredUsername = $row['Username'];
+	}
 
-	$sql_u = "SELECT * FROM users WHERE username ='" . $username . "' AND password = '" . $password . "'";
-	$res_u = mysqli_query($conn, $sql_u);
-
-	if ((mysqli_num_rows($res_u) > 0)){
+	if ($loginOk){
 		session_start();
 
 		$_SESSION["Username"] = $enteredUsername;

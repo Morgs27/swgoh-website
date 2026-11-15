@@ -17,16 +17,6 @@ jobs:
         run: echo ${{ secrets.DOCKERHUB_PAT }} | docker login --username morgs27 --password-stdin
 
       - name: Build and push Docker image
-        env:
-          DB_SERVER: ${{ secrets.DB_SERVER }}
-          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_NAME: ${{ secrets.DB_NAME }}
         run: |
-          docker build \
-            --build-arg DB_SERVER=${DB_SERVER} \
-            --build-arg DB_USERNAME=${DB_USERNAME} \
-            --build-arg DB_PASSWORD=${DB_PASSWORD} \
-            --build-arg DB_NAME=${DB_NAME} \
-            -t morgs27/swgoh-website:latest .
+          docker build -t morgs27/swgoh-website:latest .
           docker push morgs27/swgoh-website:latest

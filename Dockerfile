@@ -4,15 +4,8 @@ FROM php:7.4-apache
 # Set the working directory inside the container
 WORKDIR /var/www/html
 
-ARG DB_SERVER
-ARG DB_USERNAME
-ARG DB_PASSWORD
-ARG DB_NAME
-
-ENV DB_SERVER=${DB_SERVER}
-ENV DB_USERNAME=${DB_USERNAME}
-ENV DB_PASSWORD=${DB_PASSWORD}
-ENV DB_NAME=${DB_NAME}
+# Database settings (DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME) are passed in
+# at run time as environment variables, never baked into the image.
 
 
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
