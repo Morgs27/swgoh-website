@@ -66,9 +66,7 @@ if (isset($_POST['reset-password-submit'])){
                             echo "There was an error 4";
                             exit();
                          } else {
-                             //need to hash password here
-                             //  $newPwdHash = password_hash($password,PASSWORD_DEFAULT);
-                             $newPwdHash = $password;
+                             $newPwdHash = password_hash($password, PASSWORD_DEFAULT);
                              mysqli_stmt_bind_param($stmt, "ss", $newPwdHash, $tokenEmail);
                              mysqli_stmt_execute($stmt);
 

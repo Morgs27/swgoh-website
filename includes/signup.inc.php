@@ -46,8 +46,10 @@ if (isset($_POST["submit"])) {
 	
 	
 	// Check for username already in database
-	$sql_u = "SELECT * FROM users WHERE username = '$newUsername'";
-	$res_u = mysqli_query($conn, $sql_u);
+	$stmt_u = mysqli_prepare($conn, "SELECT Username FROM users WHERE Username = ?");
+	mysqli_stmt_bind_param($stmt_u, "s", $newUsername);
+	mysqli_stmt_execute($stmt_u);
+	$res_u = mysqli_stmt_get_result($stmt_u);
 	
 	
 	
@@ -71,9 +73,11 @@ if (isset($_POST["submit"])) {
 	
 	//Insert User if all validation is passed
 	else {
-		$sql = "INSERT INTO users (Username, ally_code, Password, email) VALUES ('$newUsername', '$ally_code','$newPassword','$email')";
+		$passwordHash = password_hash($newPassword, PASSWORD_DEFAULT);
+		$stmt_i = mysqli_prepare($conn, "INSERT INTO users (Username, ally_code, Password, email) VALUES (?, ?, ?, ?)");
+		mysqli_stmt_bind_param($stmt_i, "ssss", $newUsername, $ally_code, $passwordHash, $email);
 		
-		if ($conn->query($sql) === TRUE) {
+		if (mysqli_stmt_execute($stmt_i)) {
 		
 		header("location: ../signup.php?sucess=$newUsername");	
 		} 
